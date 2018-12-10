@@ -11,5 +11,6 @@ We’d be making API calls to the Pro writing aid for text and grammar checking 
 
 Wireframes , ERD and API endpoints:
 ![Wireframe]()
-![ERD](../images/erdplus-diagram.png)
-![API](../images/API-endpoints.png)
+![ERD](erdplus-diagram.png)
+![API](API-endpoints.png)
+![Component Hierarchy](component-hierarchy.jpg)
