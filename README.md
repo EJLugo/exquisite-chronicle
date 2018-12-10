@@ -26,7 +26,10 @@
 * Third party APIs: https://market.mashape.com/montanaflynn/spellcheck for spell checking functionality.
 
 Wireframes , ERD and API endpoints:
-![Wireframe]()
+![Wireframe](https://github.com/EJLugo/exquisite-chronicle/blob/master/images/wireframe1.JPG)
+(https://github.com/EJLugo/exquisite-chronicle/blob/master/images/wireframe2.JPG)
+(https://github.com/EJLugo/exquisite-chronicle/blob/master/images/wireframe3.JPG)
+(https://github.com/EJLugo/exquisite-chronicle/blob/master/images/wireframe4.JPG)
 ![ERD](https://github.com/EJLugo/exquisite-chronicle/blob/master/images/erdplus-diagram.png)
 ![API](https://github.com/EJLugo/exquisite-chronicle/blob/master/images/API-endpoints.png)
 ![Component Hierarchy](https://github.com/EJLugo/exquisite-chronicle/blob/master/images/component-hierarchy.JPG)
