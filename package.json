@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "bcrypt": "^3.0.2"
+    "axios": "^0.18.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
