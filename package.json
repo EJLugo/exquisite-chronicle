@@ -4,7 +4,7 @@
   "description": "* We are developing a writing app where based off of the idea of Exquisite Corpse, a collaborative story chronicle that traces its roots to the Parisian Surrealist Movement.",
   "main": "index.js",
   "dependencies": {
-    "bcrypt": "^3.0.2"
+    "bcrypt": "^3.0.2",
     "axios": "^0.18.0"
   },
   "devDependencies": {
