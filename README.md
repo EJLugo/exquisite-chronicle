@@ -10,7 +10,6 @@ Push that snippet and update the story and see the story as it currently is.
 We’d be making API calls to the Pro writing aid for text and grammar checking and the  Oxford dictionary for spell checking purposes.
 
 Wireframes , ERD and API endpoints:
-![Wireframe](https://drive.google.com/file/d/1x7S_AAM9QPYIgnax9KgEYZAEcOK0wTrB/view)
-![ERD](https://drive.google.com/file/d/1tO9ilAbeMXvcvWoCFrjFImPOol7c9UfI/view)
-![API](https://drive.google.com/file/d/1Ap60ZhWdqB25_JqaKwmZrBg4AjnHpgsd/view)
-![API](API endpoints.png)
+![Wireframe]()
+![ERD](../images/erdplus-diagram.png)
+![API](../images/API-endpoints.png)
