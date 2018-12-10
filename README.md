@@ -1,13 +1,29 @@
-# exquisite-chronicle
+# Exquisite Chronicle
+* We are developing a writing app where based off of the idea of Exquisite Corpse, a collaborative story chronicle that traces its roots to the Parisian Surrealist Movement.
 
-We are developing a writing app where based off of the idea of Exquisite Corpse. It is a collaborative story chronicle that traces its roots to the Parisian Surrealist Movement. Exquisite Corpse is written by several people, each of whom writes a word on a sheet of paper, folds the paper to conceal it, and passes it on to the next person for his or her contribution. We’d like to incorporate that group story writing idea into our app with the following user screens and prompts:
+* Exquisite Corpse is written by several people, each of whom writes a word on a sheet of paper, folds the paper to conceal it, and passes it on to the next person for his or her contribution.
 
-From a welcome and login screen user creates a login and password;
-After login the user will then be given a drop down menu to view a list of prompts with a property where they would pick a story genre: such as horror, mystery, adventure, love story etc.
-The next prompt would render a view to a piece of a story last entered in the genre the user chose;
-The form or new view to input field would add that bit of story that the user entered on submit to update a call and attach that to the snippet they were given;
-Push that snippet and update the story and see the story as it currently is.
-We’d be making API calls to the Pro writing aid for text and grammar checking and the  Oxford dictionary for spell checking purposes.
+* We’d like to incorporate that group story writing idea into our app. A user writes a prompt for other users to view. Those users can then add chapters to the prompt, creating a collaborative story telling experience.
+
+## User Interactions
+* From the index view, users can view completed stories by genre. 	
+
+* After logging in, a user can create a prompt by genre or view prompts by genre; e.g. such as horror, mystery, adventure, love story etc.
+
+* Users can select a prompt, rendering a view to the last chapter submitted under that prompt.
+
+* A form would allow a user to add a new chapter to that prompt. API calls would append the chapter to the prompt in the database.
+
+* Each prompt has a max number of chapters, and each chapter a max number of characters.
+
+## Technologies Used
+* React for user interface
+
+* Express with NodeJS to make AJAX calls with custom routes defined.
+
+* Sequelize ORM on a PostgreSQL database.
+
+* Third party APIs: https://market.mashape.com/montanaflynn/spellcheck for spell checking functionality.
 
 Wireframes , ERD and API endpoints:
 ![Wireframe]()
