@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 
-const SALT = 10; // TODO: Randomize SALT generator
+const { SALT } = process.env;
 
 async function createHash(password) {
 	const passwordDigest = await bcrypt.hashSync(password, SALT);
