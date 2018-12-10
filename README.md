@@ -13,3 +13,4 @@ Wireframes , ERD and API endpoints:
 ![Wireframe](https://drive.google.com/file/d/1x7S_AAM9QPYIgnax9KgEYZAEcOK0wTrB/view)
 ![ERD](https://drive.google.com/file/d/1tO9ilAbeMXvcvWoCFrjFImPOol7c9UfI/view)
 ![API](https://drive.google.com/file/d/1Ap60ZhWdqB25_JqaKwmZrBg4AjnHpgsd/view)
+![API](API endpoints.png)
