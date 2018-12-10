@@ -37,6 +37,14 @@ Prompt.belongsTo(User);
 Prompt.hasMany(Chapter);
 Chapter.belongsTo(Prompt);
 
+<<<<<<< HEAD
+=======
+User.hasMany(Chapter);
+Chapter.belongsTo(User);
+
+User.belongsToMany(Completed_Story, through: {'users_completed_stories'});
+Completed_Story.belongsToMany(User, through: {'users_completed_stories'});
+>>>>>>> 985379478641c41112041a70f95b1954aaa4a837
 
 module.exports = {
 	sequelize,

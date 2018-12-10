@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "* We are developing a writing app where based off of the idea of Exquisite Corpse, a collaborative story chronicle that traces its roots to the Parisian Surrealist Movement.",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "bcrypt": "^3.0.2",
+    "axios": "^0.18.0"
+  },
   "devDependencies": {
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.10.0",
+    "babel-eslint": "9.0.0",
+    "eslint": "5.6.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
