@@ -11,6 +11,6 @@ We’d be making API calls to the Pro writing aid for text and grammar checking 
 
 Wireframes , ERD and API endpoints:
 ![Wireframe]()
-![ERD](erdplus-diagram.png)
-![API](API-endpoints.png)
-![Component Hierarchy](component-hierarchy.jpg)
+![ERD](https://github.com/EJLugo/exquisite-chronicle/blob/master/images/erdplus-diagram.png)
+![API](https://github.com/EJLugo/exquisite-chronicle/blob/master/images/API%20endpoints.png)
+![Component Hierarchy](https://github.com/EJLugo/exquisite-chronicle/blob/master/images/component-hierarchy.JPG)
