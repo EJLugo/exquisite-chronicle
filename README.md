@@ -27,9 +27,9 @@
 
 Wireframes , ERD and API endpoints:
 ![Wireframe](https://github.com/EJLugo/exquisite-chronicle/blob/master/images/wireframe1.JPG)
-(https://github.com/EJLugo/exquisite-chronicle/blob/master/images/wireframe2.JPG)
-(https://github.com/EJLugo/exquisite-chronicle/blob/master/images/wireframe3.JPG)
-(https://github.com/EJLugo/exquisite-chronicle/blob/master/images/wireframe4.JPG)
+![Wireframe2](https://github.com/EJLugo/exquisite-chronicle/blob/master/images/wireframe2.JPG)
+![Wireframe3](https://github.com/EJLugo/exquisite-chronicle/blob/master/images/wireframe3.JPG)
+![Wireframe4](https://github.com/EJLugo/exquisite-chronicle/blob/master/images/wireframe4.JPG)
 ![ERD](https://github.com/EJLugo/exquisite-chronicle/blob/master/images/erdplus-diagram.png)
 ![API](https://github.com/EJLugo/exquisite-chronicle/blob/master/images/API-endpoints.png)
 ![Component Hierarchy](https://github.com/EJLugo/exquisite-chronicle/blob/master/images/component-hierarchy.JPG)
