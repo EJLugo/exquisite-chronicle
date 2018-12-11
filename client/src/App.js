@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Fragment } from 'react';
 import './App.css';
-//import from ajax-helpers.js
+
 import RegisterForm from './components/RegisterForm';
 import LoginForm from './components/LoginForm';
 import Welcome from './components/Welcome';

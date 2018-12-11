@@ -27,7 +27,7 @@ User.beforeUpdate(async (user, options) => {
 		const passwordDigest = await createHash(user.password);
 		user.password = passwordDigest;
 	}
-})
+});
 
 const Chapter = sequelize.define('chapter', {
 	body: Sequelize.TEXT,
