@@ -8,7 +8,7 @@ const {chapterRouter} = require('./routes/chapterRouter.js');
 const {completedStoryRouter} = require('./routes/completedStoryRouter.js');
 const {promptRouter} = require('./routes/promptRouter');
 
-const PORT = process.envPORT || 3000;
+const PORT = process.envPORT || 3001;
 
 const app = express();
 

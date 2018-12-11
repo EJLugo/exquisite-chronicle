@@ -8,7 +8,7 @@ promptRouter.get('/', async (req, res) => {
   } catch (e) {
   console.error(e);
   }
-})
+});
 
 module.exports = {
   promptRouter
