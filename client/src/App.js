@@ -8,6 +8,9 @@ import Welcome from './components/Welcome';
 import Dropdown from './components/Dropdown';
 import ViewCompletedStories from './components/ViewCompletedStories';
 import ViewAllPrompts from './components/ViewAllPrompts';
+import NavBar from './components/NavBar';
+import Footer from './components/Footer';
+import PromptForm from './components/PromptForm';
 
 class App extends Component {
   constructor(props) {
@@ -16,29 +19,17 @@ class App extends Component {
       currentUser: null,
       formData: {
         username: '',
-        password: ''
+        password: '',
+        date: ''
       },
-      userView: 'register',
+      userView: 'welcome',
       loggedIn: false,
       token: null,
 
     };
     this.handleChange = this.handleChange.bind(this);
     this.renderUserview = this.renderUserview.bind(this);
-  }
-
-  swapUserForm(){
-    this.setState(prevState => {
-      let view;
-      if(prevState.userView === 'register'){
-        view = 'login';
-      }else{
-        view = 'register';
-      }
-      return {
-        userView: view
-      }
-    });
+    this.setView = this.setView.bind(this);
   }
 
   handleChange(event) {
@@ -53,17 +44,22 @@ class App extends Component {
 
   renderUserview() {
     const { userView, formData } = this.state;
-    const { username, password } = formData;
-    if (userView === 'register') {
+    const { username, password, date } = formData;
+    switch (userView) {
+
+    case 'register':
       return (
         <RegisterForm
           handleChange={this.handleChange}
           username={username}
           password={password}
+          date={date}
           swapUserForm={this.swapUserForm}
         />
       );
-    } else {
+    break;
+
+    case 'login':
       return (
         <LoginForm
           handleChange={this.handleChange}
@@ -72,7 +68,17 @@ class App extends Component {
           swapUserForm={this.swapUserForm}
         />
       );
+    break;
+
+    default:
+      return <Welcome />
     }
+  }
+
+  setView(view){
+    this.setState({
+      userView: view
+    });
   }
 
   render() {
@@ -80,23 +86,10 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Exquisite Chronicle</h1>
+        <NavBar handleViewChange={this.setView}/>
+        {this.renderUserview()}
         <Dropdown />
-        <Welcome />
-        <ViewAllPrompts />
-        <ViewCompletedStories />
-      {/* if currentUser is true, show username */}
-        {currentUser && (
-          <div>
-            The current user is: {currentUser.username}
-          </div>
-        )}
-      {/* if loggedIn is true, */}
-        {loggedIn ? (
-          <Fragment>
-            <Welcome />
-          </Fragment>
-        ) : this.renderUserview()
-        }
+        <Footer />
       </div>
     );
   }
