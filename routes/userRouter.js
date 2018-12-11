@@ -1,15 +1,6 @@
 const userRouter = require('express').Router();
 const { User, Prompt, Chapter } = require('../models');
 
-userRouter.get('/', async (req, res) => {
-  try {
-    const users = await User.findAll;
-    res.json(users.dataValues)
-  } catch (e) {
-  console.error(e);
-  }
-})
-
 userRouter.get('/:id', async (req, res) => {
 	try {
 		const { id } = req.params;
@@ -19,8 +10,6 @@ userRouter.get('/:id', async (req, res) => {
     console.error(e);
   }
 })
-
-// relational querie for Users line 23-31 is placeholder content for this
 
 userRouter.get('/:user_id/prompts', async (req, res) => {
 	try {
@@ -46,7 +35,7 @@ userRouter.get('/:user_id/prompts/:id', async (req, res) => {
 
 userRouter.get('/:user_id/chapters', async (req, res) => {
 	try {
-		const { user_id } = req.params.user_id;
+		const { user_id } = req.params;
 		const chapters = await Chapter.findAll({
       where:{ user_id }
     });
@@ -64,6 +53,10 @@ userRouter.get('/:user_id/chapters/:id', async (req, res) => {
     console.error(e);
   }
 })
+
+// TODO: POST new user
+//POST new prompt
+//POST new chapter 
 
 module.exports = {
   userRouter
