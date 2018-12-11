@@ -19,7 +19,6 @@ const User = sequelize.define('user', {
 // Curt: hash user given password to store in database
 User.beforeCreate(async (user, options) => {
 	const passwordDigest = await createHash(user.password);
-	console.log('password digest', passwordDigest);
 	user.password = passwordDigest;
 });
 // Curt: when a user updates her info, check if password was changed, if so hash and store it.
@@ -46,7 +45,7 @@ const CompletedStory = sequelize.define('completed_story', {
 	title: Sequelize.STRING,
 	genre: Sequelize.STRING,
 	body: Sequelize.TEXT,
-	//Array of user_id ?
+	// Array of user_id ?
 });
 
 User.hasMany(Prompt);
