@@ -1,9 +1,9 @@
-const Sequelize = require('sequelize');
+const { Sequelize } = require('sequelize');
 
 const sequelize = new Sequelize({
   database: 'exquisite_chronicle_db',
   dialect: 'postgres',
-  OperatorsAliases: false,
+  operatorsAliases: false,
   define: {
     underscored: true
   },
@@ -12,7 +12,7 @@ const sequelize = new Sequelize({
 const User = sequelize.define('user', {
 	username: Sequelize.STRING,
 	password: Sequelize.STRING,
-	birthday: Sequelize.INTEGER
+	birthday: Sequelize.DATEONLY
 });
 
 const Chapter = sequelize.define('chapter', {
@@ -37,14 +37,19 @@ Prompt.belongsTo(User);
 Prompt.hasMany(Chapter);
 Chapter.belongsTo(Prompt);
 
-<<<<<<< HEAD
-=======
-User.hasMany(Chapter);
-Chapter.belongsTo(User);
+// async function testConnection() {
+//   try {
+//     await sequelize.authenticate()
+//     console.log('Connection has been established successfully');
+//   } catch (e) {
+//     console.error(e);
+//   } finally {
+//     process.exit();
+//   }
+// }
+//
+// testConnection();
 
-User.belongsToMany(Completed_Story, through: {'users_completed_stories'});
-Completed_Story.belongsToMany(User, through: {'users_completed_stories'});
->>>>>>> 985379478641c41112041a70f95b1954aaa4a837
 
 module.exports = {
 	sequelize,
