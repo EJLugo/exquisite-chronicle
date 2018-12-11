@@ -1,14 +1,24 @@
-const express = require('express');
+const completedStoryRouter = require('express').Router();
+const { Completed_Story } = require('../models');
 
-promptRouter.get('/:id', async (req, res) => {
+completedStoryRouter.get('/', async (req, res) => {
   try {
-    const id = req.params.id
-    const stories = await Stories.findByPk(id);
-    res.json(user.dataValues)
+    const stories = await Completed_Story.findAll;
+    res.json(stories.dataValues)
   } catch (e) {
   console.error(e);
-}
-}
+  }
+})
+
+completedStoryRouter.get('/:id', async (req, res) => {
+  try {
+    const { id } = req.params.id
+    const story = await Completed_Story.findByPk(id);
+    res.json(story.dataValues)
+  } catch (e) {
+  console.error(e);
+  }
+})
 
 module.exports = {
   completedStoryRouter

@@ -1,14 +1,14 @@
-const express = require('express');
+const promptRouter = require('express').Router();
+const { Prompt } = require('../models');
 
-promptRouter.get('/:id', async (req, res) => {
+promptRouter.get('/', async (req, res) => {
   try {
-    const id = req.params.id
-    const prompt = await Prompt.findByPk(id);
-    res.json(prompt.dataValues)
+    const prompts = await Prompt.findAll;
+    res.json(prompts.dataValues)
   } catch (e) {
   console.error(e);
-}
-}
+  }
+})
 
 module.exports = {
   promptRouter
