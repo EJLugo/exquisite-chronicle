@@ -1,7 +1,9 @@
 const userRouter = require('express').Router();
 const { User, Prompt, Chapter } = require('../models');
+const { sign } = require('../encrypt.js');
 
 userRouter.get('/:id', async (req, res) => {
+	console.log('server get user');
 	try {
 		const { id } = req.params;
 		const user = await User.findByPk(id);
@@ -11,8 +13,7 @@ userRouter.get('/:id', async (req, res) => {
   } finally {
 		process.exit();
 	}
-})
-
+});
 
 userRouter.get('/:user_id/prompts', async (req, res) => {
 	try {
@@ -26,7 +27,8 @@ userRouter.get('/:user_id/prompts', async (req, res) => {
   } finally {
 		process.exit();
 	}
-})
+});
+
 
 userRouter.get('/:user_id/prompts/:id', async (req, res) => {
 	try {
@@ -38,7 +40,8 @@ userRouter.get('/:user_id/prompts/:id', async (req, res) => {
   } finally {
 		process.exit();
 	}
-})
+});
+
 
 userRouter.get('/:user_id/chapters', async (req, res) => {
 	try {
@@ -52,7 +55,7 @@ userRouter.get('/:user_id/chapters', async (req, res) => {
   } finally {
 		process.exit();
 	}
-})
+});
 
 userRouter.get('/:user_id/chapters/:id', async (req, res) => {
 	try {
@@ -64,7 +67,29 @@ userRouter.get('/:user_id/chapters/:id', async (req, res) => {
   } finally {
 		process.exit();
 	}
-})
+});
+
+userRouter.post('/', async (req, res) => {
+	try {
+		const user = await User.create(req.body);
+		const { id, username } = user.dataValues;
+		const token = sign({
+			id,
+			username,
+		});
+		res.json({
+			user: {
+				username,
+				id,
+			},
+			token,
+		});
+	} catch (e) {
+		res.json({ msg: e.message });
+	} finally {
+		process.exit();
+	}
+});
 
 userRouter.post('/:user_id/prompts', async (req, res) => {
 	try {
@@ -74,7 +99,7 @@ userRouter.post('/:user_id/prompts', async (req, res) => {
   } catch (e) {
     console.error(e);
 	}
-})
+});
 
 userRouter.post('/:user_id/chapters', async (req, res) => {
 	try {
@@ -84,7 +109,7 @@ userRouter.post('/:user_id/chapters', async (req, res) => {
   } catch (e) {
     console.error(e);
 	}
-})
+});
 
 userRouter.post('/', async (req, res) => {
 	try {
@@ -95,7 +120,7 @@ userRouter.post('/', async (req, res) => {
 	} finally {
 		process.exit();
 	}
-})
+});
 
 userRouter.put('/:user_id/prompts', async (req, res) => {
 	try {
@@ -106,13 +131,8 @@ userRouter.put('/:user_id/prompts', async (req, res) => {
 	} finally {
 		process.exit();
 	}
-})
-
-
-// TODO: POST new user
-//POST new prompt
-//POST new chapter
+});
 
 module.exports = {
-  userRouter
+	userRouter,
 };

@@ -12,5 +12,9 @@ export default (props) => (
     <p>We’d like to incorporate that group story writing idea into our app. A user writes
        a prompt for other users to view. Those users can then add chapters to the prompt,
       creating a collaborative story telling experience.</p>
+
+
+
+			<button onClick={props.sampleUser}></button>
   </div>
 )

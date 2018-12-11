@@ -1,11 +1,15 @@
-import axios from 'axios';
+const axios = require('axios');
 
 const BASE_URL = 'http://localhost:3001';
 
 //GET Request
-async function getUser(user_id){
+async function getUser(user_id, token){
 	try{
-		const user = await axios.get(`${BASE_URL}/users/${user_id}`);
+		const user = await axios.get(`${BASE_URL}/users/${user_id}`, {
+			headers:{
+				'Authorization': `Bearer ${token}`
+			}
+		});
 		return user.data;
 	}catch(e){
 		console.log(e);
@@ -68,8 +72,9 @@ async function oneUserChapter(user_id, chapter_id){
 
 //POST Request
 async function createUser(user_data){
+	console.log('ajax create user');
 	try{
-		const user = await axios.post(`${BASE_URL}/users`);
+		const user = await axios.post(`${BASE_URL}/users`, user_data);
 		return user.data;
 	}catch(e){
 		console.log(e);

@@ -24,7 +24,7 @@ handleChange(e){
             <select className='dropdownList' value={this.state.value} onChange={this.handleChange}>
               {
                 this.state.storyGenres.map(genre =>(
-                  <option key={genre.id}
+                  <option key={genre}
                           value={genre}
                     >{genre}</option>
                 ))
