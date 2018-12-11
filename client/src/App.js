@@ -7,6 +7,8 @@ import RegisterForm from './components/RegisterForm';
 import LoginForm from './components/LoginForm';
 import Welcome from './components/Welcome';
 import Dropdown from './components/Dropdown';
+import ViewCompletedStories from './components/ViewCompletedStories';
+import ViewAllPrompts from './components/ViewAllPrompts';
 
 class App extends Component {
   constructor(props) {
@@ -84,6 +86,8 @@ class App extends Component {
         <h1>Exquisite Chronicle</h1>
         <Dropdown />
         <Welcome />
+        <ViewAllPrompts />
+        <ViewCompletedStories />
       {/* if currentUser is true, show username */}
         {currentUser && (
           <div>
