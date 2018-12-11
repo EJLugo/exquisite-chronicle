@@ -7,7 +7,12 @@ userRouter.get('/:id', async (req, res) => {
 	try {
 		const { id } = req.params;
 		const user = await User.findByPk(id);
-		res.json(user.dataValues);
+		res.json({
+			user: {
+				username: user.username,
+				id: user.id,
+			},
+		});
 	} catch (e) {
 		console.error(e);
 	} finally {
@@ -65,10 +70,15 @@ userRouter.post('/', async (req, res) => {
 		const { id, username } = user.dataValues;
 		const token = sign({
 			id,
-			username
+			username,
 		});
-		console.log(token); 
-		res.json({ user, token });
+		res.json({
+			user: {
+				username,
+				id,
+			},
+			token,
+		});
 	} catch (e) {
 		res.json({ msg: e.message });
 	} finally {
