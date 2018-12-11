@@ -23,11 +23,24 @@ class ViewAllPrompts extends Component{
           body: 'lsjjdfaffjdklsjf',
           max_chapters: 6,
           chapter_length: 800
-        },
-
+        }
       ]
     }
   }
+
+  // async componentDidMount(){
+  //   try {
+  //     const data = await allPrompts();
+  //     this.state.(
+  //       {
+  //         prompts:data
+  //       }
+  //     )
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // }
+
   render(){
     return(
       <div>

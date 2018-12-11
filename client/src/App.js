@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Fragment } from 'react';
 import './App.css';
-// import axios from 'axios';
 //import from ajax-helpers.js
 import RegisterForm from './components/RegisterForm';
 import LoginForm from './components/LoginForm';
@@ -13,7 +12,6 @@ import ViewAllPrompts from './components/ViewAllPrompts';
 class App extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       currentUser: null,
       formData: {
@@ -27,9 +25,7 @@ class App extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.renderUserview = this.renderUserview.bind(this);
-
   }
-
 
   swapUserForm(){
     this.setState(prevState => {
