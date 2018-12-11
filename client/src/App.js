@@ -88,6 +88,7 @@ class App extends Component {
         <h1>Exquisite Chronicle</h1>
         <NavBar handleViewChange={this.setView}/>
         {this.renderUserview()}
+        <Dropdown />
         <Footer />
       </div>
     );
