@@ -20,6 +20,15 @@ completedStoryRouter.get('/:id', async (req, res) => {
   }
 })
 
+createCompletedStory.post('/', async (req, res) => {
+	try {
+		const story = await CompletedStory.create(req.body);
+    res.json(story.dataValues);
+  } catch (e) {
+    res.json(e);
+	}
+})
+
 module.exports = {
   completedStoryRouter
 };
