@@ -30,10 +30,5 @@ export default (props) => (
       type="submit"
       value="Login"
     />
-
-    <button
-      // onClick={props.swapUserForm}
-      >Register Instead</button>
-
   </form>
 )

@@ -21,11 +21,15 @@ export default (props) => (
       // onChange={props.handleChange}
       // value={props.password}
     />
-
+    <label>D.O.B</label>
+    <input
+      type="date"
+      id="date"
+      name="date"
+      onChange={props.handleChange}
+      value={props.date}
+    />
 
     <input type="submit" value="Register" />
-    <button
-      // onClick={props.swapUserForm}
-      >Login Instead</button>
   </form>
 )
