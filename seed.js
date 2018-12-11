@@ -23,6 +23,11 @@ async function createUser() {
 			password: 'Kerouacdrives',
 			birthday: moment('23 December 2000')
 		}
+		{
+			username: 'HappyPen',
+			password: 'St4ndByM3',
+			birthday: moment('25 December 2002')
+		}
 	]);
 };
 
@@ -70,8 +75,6 @@ async function associateUsersAndPrompts() {
 	const [users, prompts] = await Promise.all([usersPromise, promptsPromise]);
 	await Promise.all(users.map(user => user.setPrompts(prompts)));
 }
-
-
 
 async function seed() {
 	try {
