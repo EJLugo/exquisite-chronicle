@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 
-const { SALT } = process.env;
+const SALT = 10;
 
 async function createHash(password) {
 	const passwordDigest = await bcrypt.hash(password, SALT);
