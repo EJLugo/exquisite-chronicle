@@ -22,7 +22,7 @@ async function createUser() {
 			username: 'JackWrites',
 			password: 'Kerouacdrives',
 			birthday: moment('23 December 2000')
-		}
+		},
 		{
 			username: 'HappyPen',
 			password: 'St4ndByM3',

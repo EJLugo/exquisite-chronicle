@@ -1,6 +1,12 @@
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
+const SECRET = "please don't tell";
 const SALT = 10;
+
+function sign(payload) {
+	return jwt.sign(payload, SECRET);
+}
 
 async function createHash(password) {
 	const passwordDigest = await bcrypt.hash(password, SALT);
@@ -15,4 +21,5 @@ async function compare(password, hashedPassword) {
 module.exports = {
 	createHash,
 	compare,
+	sign
 };

@@ -72,7 +72,6 @@ async function oneUserChapter(user_id, chapter_id){
 
 //POST Request
 async function createUser(user_data){
-	console.log('ajax', user_data);
 	try{
 		const user = await axios.post(`${BASE_URL}/users`, user_data);
 		return user.data;
