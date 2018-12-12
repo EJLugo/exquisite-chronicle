@@ -10,7 +10,7 @@ export default class Footer extends Component {
   render() {
     return (
       <footer className="footer">
-          <div class="footer-text">
+          <div className="footer-text">
              <p>
                <strong>Exquisite Chronicle</strong> by
                <a href="https://.com"> Group Two</a>. The source code is licensed

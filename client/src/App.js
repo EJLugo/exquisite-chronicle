@@ -11,6 +11,7 @@ import ViewAllPrompts from './components/ViewAllPrompts';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import PromptForm from './components/PromptForm';
+import RenderUserChapters from './components/RenderUserChapters';
 
 
 class App extends Component {
@@ -104,7 +105,9 @@ class App extends Component {
         <NavBar handleViewChange={this.setView}/>
         {this.renderUserview()}
         <Dropdown />
-        <PromptForm />
+        <RenderUserChapters
+          loggedIn={this.state.loggedIn}
+          currentUser={this.state.currentUser}/>
         <Footer />
       </div>
     );
