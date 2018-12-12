@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-// const { createHash } = require('./encrypt.js');
+const { createHash } = require('./password.js');
 
 // Circular imports
 

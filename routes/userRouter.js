@@ -48,7 +48,7 @@ userRouter.get('/:id', async (req, res) => {
 	}
 });
 
-// Protected Route
+// GET user's prompts
 userRouter.get('/:user_id/prompts', passport.authenticate('jwt', { session: false }),
 	async (req, res) => {
 		try {
@@ -64,6 +64,7 @@ userRouter.get('/:user_id/prompts', passport.authenticate('jwt', { session: fals
 		}
 });
 
+// GET one prompt
 userRouter.get('/:user_id/prompts/:id', async (req, res) => {
 	try {
 		const { id } = req.params;
@@ -76,6 +77,7 @@ userRouter.get('/:user_id/prompts/:id', async (req, res) => {
 	}
 });
 
+// GET user's chapters
 userRouter.get('/:user_id/chapters', async (req, res) => {
 	try {
 		const { user_id } = req.params;
@@ -90,6 +92,7 @@ userRouter.get('/:user_id/chapters', async (req, res) => {
 	}
 });
 
+// GET one chapter
 userRouter.get('/:user_id/chapters/:id', async (req, res) => {
 	try {
 		const { user_id } = req.params;
@@ -103,7 +106,7 @@ userRouter.get('/:user_id/chapters/:id', async (req, res) => {
 });
 
 
-
+// POST new prompt
 userRouter.post('/:user_id/prompts', async (req, res) => {
 	try {
 		const { user_id } = req.params;
@@ -114,6 +117,7 @@ userRouter.post('/:user_id/prompts', async (req, res) => {
 	}
 });
 
+// POST new chapter
 userRouter.post('/:user_id/chapters', async (req, res) => {
 	try {
 		const { user_id } = req.params;
@@ -124,6 +128,7 @@ userRouter.post('/:user_id/chapters', async (req, res) => {
 	}
 });
 
+// create user
 userRouter.post('/', async (req, res) => {
 	try {
 		const newUser = await User.create(req.body);
@@ -135,6 +140,7 @@ userRouter.post('/', async (req, res) => {
 	}
 });
 
+// Update prompt
 userRouter.put('/:user_id/prompts', async (req, res) => {
 	try {
 		const newUser = await User.create(req.body);
