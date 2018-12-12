@@ -2,6 +2,8 @@ const axios = require('axios');
 
 const BASE_URL = 'http://localhost:3001';
 
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoiY2MxMjkiLCJpYXQiOjE1NDQ1ODExODN9.h9Xi8wIGp5ynwPZN_MrZThEWqJ-h_K4nW8JYDWOyDR8'
+
 //GET Request
 async function getUser(user_id, token){
 	try{
@@ -45,8 +47,12 @@ async function allPrompts(){
 
 async function allUserPrompts(user_id){
 	try{
-		const userPrompt = await axios.get(`${BASE_URL}/user/${user_id}/prompts`);
-		return userPrompt.data;
+		const userPrompts = await axios.get(`${BASE_URL}/users/${user_id}/prompts`, {
+			headers:{
+				'Authorization': `Bearer ${token}`
+			}
+		});
+		return userPrompts.data;
 	}catch(e){
 		console.log(e);
 	}
@@ -54,7 +60,7 @@ async function allUserPrompts(user_id){
 
 async function allUserChapters(user_id){
 	try{
-		const userChapter = await axios.get(`${BASE_URL}/user/${user_id}/chapters`);
+		const userChapter = await axios.get(`${BASE_URL}/users/${user_id}/chapters`);
 		return userChapter.data;
 	}catch(e){
 		console.log(e);

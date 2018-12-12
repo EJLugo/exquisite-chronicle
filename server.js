@@ -12,7 +12,7 @@ const PORT = process.envPORT || 3001;
 const app = express();
 
 app.use(logger('dev'));
-app.use(bodyParser.json());
+app.use(bodyParser());
 app.use(cors());
 
 app.use('/users', userRouter);

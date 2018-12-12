@@ -15,6 +15,7 @@ const opts = {
 
 passport.use(new JwtStrategy(opts, async (payload, done) => {
 	try {
+		console.log('payload id ', payload);
 		const user = await User.findByPk(payload.id);
 		return done(null, user);
 	} catch (e) {
@@ -40,4 +41,5 @@ module.exports = {
 	createHash,
 	compare,
 	sign,
+	passport,
 };

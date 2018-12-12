@@ -1,34 +1,47 @@
 const userRouter = require('express').Router();
 const { User, Prompt, Chapter } = require('../models');
-const { sign } = require('../encrypt.js');
+const { sign, passport } = require('../encrypt.js');
+
+
+// Get Routes
+
+userRouter.get('/currentuser', passport.authenticate('jwt', { session: false }), (req, res) => {
+  res.json({msg: 'logged in', user: req.user });
+});
 
 userRouter.get('/:id', async (req, res) => {
-	console.log('server get user');
 	try {
 		const { id } = req.params;
 		const user = await User.findByPk(id);
-    res.json(user.dataValues);
-  } catch (e) {
-    console.error(e);
-  } finally {
+		res.json({
+			user: {
+				id: user.dataValues.id,
+				username: user.dataValues.username,
+			},
+		});
+	} catch (e) {
+		res.json({ msg: e.message });
+	} finally {
 		process.exit();
 	}
 });
 
-userRouter.get('/:user_id/prompts', async (req, res) => {
-	try {
-		const { user_id } = req.params;
-		const prompts = await Prompt.findAll({
-      where:{ user_id }
-    });
-    res.json(prompts.dataValues);
-  } catch (e) {
-    console.error(e);
-  } finally {
-		process.exit();
-	}
+userRouter.get('/:userId/prompts', passport.authenticate('jwt', { session: false }),
+	async (req, res) => {
+		try {
+			const { userId } = req.params;
+			const prompts = await Prompt.findAll({
+				where: {
+					user_id: userId,
+				},
+			});
+			res.json(prompts);
+		} catch (e) {
+			res.json({ msg: e.message });
+		} finally {
+			process.exit();
+		}
 });
-
 
 userRouter.get('/:user_id/prompts/:id', async (req, res) => {
 	try {
@@ -41,7 +54,6 @@ userRouter.get('/:user_id/prompts/:id', async (req, res) => {
 		process.exit();
 	}
 });
-
 
 userRouter.get('/:user_id/chapters', async (req, res) => {
 	try {
@@ -69,6 +81,7 @@ userRouter.get('/:user_id/chapters/:id', async (req, res) => {
 	}
 });
 
+// POST Routes
 userRouter.post('/', async (req, res) => {
 	try {
 		const user = await User.create(req.body);
@@ -111,17 +124,7 @@ userRouter.post('/:user_id/chapters', async (req, res) => {
 	}
 });
 
-userRouter.post('/', async (req, res) => {
-	try {
-		const newUser = await User.create(req.body);
-		res.json(newUser.dataValues);
-	} catch (e) {
-		res.json({ msg: e.message });
-	} finally {
-		process.exit();
-	}
-});
-
+// PUT Routes
 userRouter.put('/:user_id/prompts', async (req, res) => {
 	try {
 		const newUser = await User.create(req.body);
@@ -132,6 +135,9 @@ userRouter.put('/:user_id/prompts', async (req, res) => {
 		process.exit();
 	}
 });
+
+// TODO: deleteUser route
+// TODO: put user ; to update user info
 
 module.exports = {
 	userRouter,
