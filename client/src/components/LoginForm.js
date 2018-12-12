@@ -1,36 +1,68 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-export default (props) => (
-  <form
-    className='register-form'
-    onSubmit={props.handleSubmit}
-   >
-    <h2>Sign In</h2>
-    <label htmlFor="username">Username</label>
+export default class LoginForm extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      formData: {
+        username: '',
+        password: ''
+      }
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-    <input
-      type='text'
-      id='username'
-      name='username'
-      placeholder='username'
-      onChange={props.handleChange}
-      value={props.username}
-    />
+  handleChange(e){
+    const { name, value } = e.target;
+    this.setState(prevState => ({
+      formData: {
+        ...prevState.formData,
+        [name]:value
+      }
+    }));
+  }
 
-    <label htmlFor="password">Password</label>
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(this.state.formData);
+  }
 
-    <input
-      type="text"
-      id="password"
-      name="password"
-      placeholder='password'
-      onChange={props.handleChange}
-      value={props.password}
-    />
+  render() {
+    return (
+      <form
+        className='register-form'
+        onSubmit={this.handleSubmit}
+       >
+        <h2>Sign In</h2>
+        <label htmlFor="username">Username</label>
 
-    <input
-      type="submit"
-      value="Login"
-    />
-  </form>
-)
+        <input
+          type='text'
+          id='username'
+          name='username'
+          placeholder='username'
+          onChange={this.handleChange}
+          value={this.state.username}
+        />
+
+        <label htmlFor="password">Password</label>
+
+        <input
+          type="text"
+          id="password"
+          name="password"
+          placeholder='password'
+          onChange={this.handleChange}
+          value={this.state.password}
+        />
+
+        <input
+          type="submit"
+          value="Login"
+        />
+      </form>
+    )
+  }
+
+}
