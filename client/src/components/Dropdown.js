@@ -15,6 +15,11 @@ handleChange(e){
     });
 }
 
+handleSubmit(e) {
+    alert('You choose: ' + this.state.storyGenres);
+    e.preventDefault();
+}
+
   render(){
     return(
       <div>
