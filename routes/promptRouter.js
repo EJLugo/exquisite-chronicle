@@ -9,13 +9,11 @@ promptRouter.get('/', async (req, res) => {
 		console.error(e);
 	}
 });
-<<<<<<< HEAD
-=======
 
-addChapterToPrompt.put('/', async (req, res) => {
+promptRouter.update('/:id', async (req, res) => {
 	try {
 		const { id } = req.params;
-		const prompt = await Chapter.create(req.body);
+		const prompt = await Prompt.create(req.body);
     res.json(prompts.dataValues);
   } catch (e) {
     res.json({ msg: e.message });
@@ -23,9 +21,6 @@ addChapterToPrompt.put('/', async (req, res) => {
 		process.exit();
 	}
 });
-
-
->>>>>>> master
 
 module.exports = {
 	promptRouter,
