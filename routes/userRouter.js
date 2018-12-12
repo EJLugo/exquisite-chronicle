@@ -3,7 +3,6 @@ const { User, Prompt, Chapter } = require('../models');
 const { sign } = require('../encrypt.js');
 
 userRouter.get('/:id', async (req, res) => {
-	console.log('server get user');
 	try {
 		const { id } = req.params;
 		const user = await User.findByPk(id);
