@@ -3,9 +3,9 @@ const axios = require('axios');
 const BASE_URL = 'http://localhost:3001';
 
 //GET Request
-async function getUser(user_id, token){
+export async function getUser(token){
 	try{
-		const user = await axios.get(`${BASE_URL}/users/${user_id}`, {
+		const user = await axios.get(`${BASE_URL}/users/current-user`, {
 			headers:{
 				'Authorization': `Bearer ${token}`
 			}
@@ -43,9 +43,14 @@ async function allPrompts(){
 	}
 };
 
-async function allUserPrompts(user_id){
+// removed id param
+async function allUserPrompts(user_id, token){
 	try{
-		const userPrompt = await axios.get(`${BASE_URL}/user/${user_id}/prompts`);
+		const userPrompt = await axios.get(`${BASE_URL}/users/${user_id}/prompts`, {
+			headers: {
+				'Authorization': `Bearer ${token}`
+			}
+		});
 		return userPrompt.data;
 	}catch(e){
 		console.log(e);
@@ -83,7 +88,7 @@ async function createUser(user_data){
 
 async function createPrompt(user_id, prompt_data){
 	try{
-		const prompt = await axios.post(`${BASE_URL}/user/${user_id}/prompts`, prompt_data);
+		const prompt = await axios.post(`${BASE_URL}/users/${user_id}/prompts`, prompt_data);
 		return prompt.data;
 	}catch(e){
 		console.log(e);
@@ -147,20 +152,20 @@ async function deleteUserPrompt(user_id, prompt_id){
 	}
 };
 
-module.exports ={
-	getUser,
-	allCompletedStories,
-	oneCompletedStory,
-	allPrompts,
-	allUserPrompts,
-	allUserChapters,
-	oneUserChapter,
-	createUser,
-	createPrompt,
-	createChapter,
-	createCompletedStory,
-	updateUser,
-	addChapterToPrompt,
-	deleteUser,
-	deleteUserPrompt,
-};
+// module.exports ={
+// 	// getUser,
+// 	allCompletedStories,
+// 	oneCompletedStory,
+// 	allPrompts,
+// 	allUserPrompts,
+// 	allUserChapters,
+// 	oneUserChapter,
+// 	createUser,
+// 	createPrompt,
+// 	createChapter,
+// 	createCompletedStory,
+// 	updateUser,
+// 	addChapterToPrompt,
+// 	deleteUser,
+// 	deleteUserPrompt,
+// };

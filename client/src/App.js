@@ -5,6 +5,7 @@ import RegisterForm from './components/RegisterForm';
 import LoginForm from './components/LoginForm';
 import Welcome from './components/Welcome';
 import Dropdown from './components/Dropdown';
+import {getUser} from './ajax-helpers.js'
 
 class App extends Component {
   constructor(props) {
@@ -12,20 +13,26 @@ class App extends Component {
 
     this.state = {
       currentUser: null,
+			token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJjYzEyOSIsImlhdCI6MTU0NDYyNjEzMn0.mnjcdmDjFFO4xmWRJR_fRGKonhTzrEpEQne7XOWdrAY',
       formData: {
         username: '',
         password: ''
       },
       userView: 'register',
       loggedIn: false,
-      token: null,
-
     };
     this.handleChange = this.handleChange.bind(this);
     this.renderUserview = this.renderUserview.bind(this);
 
   }
 
+	async componentDidMount(){
+		const currentUser = await getUser(this.state.token);
+		console.log(currentUser);
+		this.setState({
+			currentUser
+		})
+	}
 
   swapUserForm(){
     this.setState(prevState => {

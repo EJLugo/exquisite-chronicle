@@ -1,12 +1,13 @@
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const JwtStrategy = require('passport-jwt').Strategy;
-const ExtractJwt = require('passport-jwt').ExtractJwt;
-const { User } = require('./models.js');
+const { ExtractJwt } = require('passport-jwt');
+const jwt = require('jsonwebtoken');
+const {User} = require('./models.js');
 
 const SECRET = "please don't tell";
 const SALT = 10;
+const sign = payload => jwt.sign(payload, SECRET);
 
 const opts = {
 	jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
@@ -15,6 +16,8 @@ const opts = {
 
 passport.use(new JwtStrategy(opts, async (payload, done) => {
 	try {
+		console.log('encrypt, ', payload.id);
+		debugger;
 		const user = await User.findByPk(payload.id);
 		return done(null, user);
 	} catch (e) {
@@ -22,10 +25,8 @@ passport.use(new JwtStrategy(opts, async (payload, done) => {
 	}
 }));
 
-function sign(payload) {
-	return jwt.sign(payload, SECRET);
-}
 
+// Password hashing functions
 async function createHash(password) {
 	const passwordDigest = await bcrypt.hash(password, SALT);
 	return passwordDigest;
@@ -40,4 +41,5 @@ module.exports = {
 	createHash,
 	compare,
 	sign,
+	passport,
 };

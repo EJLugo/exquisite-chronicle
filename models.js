@@ -1,5 +1,7 @@
 const Sequelize = require('sequelize');
-const { createHash } = require('./encrypt.js');
+// const { createHash } = require('./encrypt.js');
+
+// Circular imports
 
 const sequelize = new Sequelize({
 	database: 'exquisite_chronicle_db',
@@ -54,7 +56,7 @@ Prompt.belongsTo(User);
 Prompt.hasMany(Chapter);
 Chapter.belongsTo(Prompt);
 
-
+console.log('models');
 module.exports = {
 	sequelize,
 	User,
