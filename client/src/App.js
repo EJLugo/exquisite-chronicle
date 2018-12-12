@@ -12,6 +12,7 @@ import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import PromptForm from './components/PromptForm';
 
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -42,6 +43,19 @@ class App extends Component {
     }));
   }
 
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(this.state.formData);
+    // await this.createUser(this.state.formData);
+  }
+
+ //  async registerUser(e) {
+ //   e.preventDefault();
+ //   const resp = await createUser(this.state.formData);
+ //   this.setState({token: resp.data.token});
+ //   this.getUser();
+ // }
+
   renderUserview() {
     const { userView, formData } = this.state;
     const { username, password, date } = formData;
@@ -63,6 +77,7 @@ class App extends Component {
       return (
         <LoginForm
           handleChange={this.handleChange}
+          onSubmit={this.handleSubmit}
           username={username}
           password={password}
           swapUserForm={this.swapUserForm}
@@ -89,6 +104,7 @@ class App extends Component {
         <NavBar handleViewChange={this.setView}/>
         {this.renderUserview()}
         <Dropdown />
+        <PromptForm />
         <Footer />
       </div>
     );
