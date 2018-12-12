@@ -19,15 +19,9 @@ class App extends Component {
     super(props);
     this.state = {
       currentUser: null,
-      formData: {
-        username: '',
-        password: '',
-        date: ''
-      },
       userView: 'welcome',
       loggedIn: false,
       token: null,
-
     };
     this.handleChange = this.handleChange.bind(this);
     this.renderUserview = this.renderUserview.bind(this);
@@ -58,18 +52,12 @@ class App extends Component {
  // }
 
   renderUserview() {
-    const { userView, formData } = this.state;
-    const { username, password, date } = formData;
+    const { userView } = this.state;
     switch (userView) {
 
     case 'register':
       return (
         <RegisterForm
-          handleChange={this.handleChange}
-          username={username}
-          password={password}
-          date={date}
-          swapUserForm={this.swapUserForm}
         />
       );
     break;
@@ -77,11 +65,7 @@ class App extends Component {
     case 'login':
       return (
         <LoginForm
-          handleChange={this.handleChange}
-          onSubmit={this.handleSubmit}
-          username={username}
-          password={password}
-          swapUserForm={this.swapUserForm}
+
         />
       );
     break;
@@ -108,6 +92,7 @@ class App extends Component {
         <RenderUserChapters
           loggedIn={this.state.loggedIn}
           currentUser={this.state.currentUser}/>
+        <PromptForm />
         <Footer />
       </div>
     );
