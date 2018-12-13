@@ -1,11 +1,11 @@
 .App {
   text-align: center;
-}
-
-.app-body {
-		background-image: URL("AdobeStock_182151650_100DPI.jpg");
-		background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center top;
-		background-color: white;
+  background-image: URL("AdobeStock_182151650_100DPI.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  min-width: 100vw;
+  min-height: 110vh;
+  margin: 0;
+  padding: 0;
 }
