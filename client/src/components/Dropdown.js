@@ -23,6 +23,11 @@ handleSubmit(e) {
     e.preventDefault();
 }
 
+handleGenreChange = () => {
+    let genre = this.state.value;
+    this.props.onSelectGenre(genre);
+}
+
   render(){
     return(
       <div>
