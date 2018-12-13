@@ -29,7 +29,7 @@ handleSubmit(e) {
 
 handleGenreChange = () => {
     let genre = this.state.value;
-    this.props.onSelectGenre(genre);
+    this.props.setGenre(genre);
 }
 
   render(){
