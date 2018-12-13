@@ -1,75 +1,35 @@
 const userRouter = require('express').Router();
-const { User, Prompt, Chapter } = require('../models');
-const { sign } = require('../encrypt.js');
+const { User } = require('../models');
+const { sign, passport } = require('../encrypt.js');
+const { compare } = require('../password.js');
 
-userRouter.get('/:id', async (req, res) => {
-	console.log('server get user');
+
+// User Log In
+userRouter.get('/login', async (req, res) => {
 	try {
-		const { id } = req.params;
-		const user = await User.findByPk(id);
-    res.json(user.dataValues);
-  } catch (e) {
-    console.error(e);
-  } finally {
-		process.exit();
+		const { username, password } = req.body;
+		const user = await User.find({
+			where: {
+				username,
+			},
+		});
+		const passwordValid = await compare(password, user.password);
+		if (passwordValid) {
+			const token = sign({
+				id: user.id,
+				username: user.username,
+			});
+			res.json({ token });
+		} else {
+			throw Error('Invalid Credentials');
+		}
+	} catch (e) {
+		res.status(401).json({ msg: e.message });
 	}
 });
 
-userRouter.get('/:user_id/prompts', async (req, res) => {
-	try {
-		const { user_id } = req.params;
-		const prompts = await Prompt.findAll({
-      where:{ user_id }
-    });
-    res.json(prompts.dataValues);
-  } catch (e) {
-    console.error(e);
-  } finally {
-		process.exit();
-	}
-});
-
-
-userRouter.get('/:user_id/prompts/:id', async (req, res) => {
-	try {
-		const { id } = req.params;
-		const prompt = await Prompt.findByPk(id);
-    res.json(prompt.dataValues);
-  } catch (e) {
-    console.error(e);
-  } finally {
-		process.exit();
-	}
-});
-
-
-userRouter.get('/:user_id/chapters', async (req, res) => {
-	try {
-		const { user_id } = req.params;
-		const chapters = await Chapter.findAll({
-      where:{ user_id }
-    });
-    res.json(chapters.dataValues);
-  } catch (e) {
-    console.error(e);
-  } finally {
-		process.exit();
-	}
-});
-
-userRouter.get('/:user_id/chapters/:id', async (req, res) => {
-	try {
-		const { user_id } = req.params;
-		const chapter = await Chapter.findByPk(id);
-    res.json(chapter.dataValues);
-  } catch (e) {
-    console.error(e);
-  } finally {
-		process.exit();
-	}
-});
-
-userRouter.post('/', async (req, res) => {
+// User Sign Up Create User
+userRouter.post('/signup', async (req, res) => {
 	try {
 		const user = await User.create(req.body);
 		const { id, username } = user.dataValues;
@@ -77,59 +37,35 @@ userRouter.post('/', async (req, res) => {
 			id,
 			username,
 		});
-		res.json({
-			user: {
-				username,
-				id,
-			},
-			token,
+		res.json({ token });
+	} catch (e) {
+		res.json({ msg: e.message });
+	}
+});
+
+// Update User Info
+userRouter.put('/update', passport.authenticate('jwt', { session: false }), async (req, res) => {
+	try {
+		const { user } = req;
+		user.update({
+			password: req.body.password,
+			birthday: req.body.birthday,
 		});
+		user.save();
+		res.json({ msg: `User ${user.id} updated.` });
+	} catch (e) {
+		res.status(401).json({ msg: e.message });
+	}
+});
+
+// Delete User
+userRouter.delete('/delete', passport.authenticate('jwt', { session: false }), async (req, res) => {
+	try {
+		const { user } = req;
+		user.destroy();
+		res.json({ msg: `User ${user.id} deleted` });
 	} catch (e) {
 		res.json({ msg: e.message });
-	} finally {
-		process.exit();
-	}
-});
-
-userRouter.post('/:user_id/prompts', async (req, res) => {
-	try {
-		const { user_id } = req.params;
-		const prompt = await Prompt.create(req.body);
-    res.json(prompt.dataValues);
-  } catch (e) {
-    console.error(e);
-	}
-});
-
-userRouter.post('/:user_id/chapters', async (req, res) => {
-	try {
-		const { user_id } = req.params;
-		const chapter = await Chapter.create(req.body);
-    res.json(chapter.dataValues);
-  } catch (e) {
-    console.error(e);
-	}
-});
-
-userRouter.post('/', async (req, res) => {
-	try {
-		const newUser = await User.create(req.body);
-		res.json(newUser.dataValues);
-	} catch (e) {
-		res.json({ msg: e.message });
-	} finally {
-		process.exit();
-	}
-});
-
-userRouter.put('/:user_id/prompts', async (req, res) => {
-	try {
-		const newUser = await User.create(req.body);
-		res.json(newUser.dataValues);
-	} catch (e) {
-		res.json({ msg: e.message });
-	} finally {
-		process.exit();
 	}
 });
 

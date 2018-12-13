@@ -7,6 +7,7 @@ export default function NavBar(props){
       <button className='button' onClick={() => props.handleViewChange('welcome')}>HOME</button>
       <button className='button' onClick={() => props.handleViewChange('login')}>login</button>
       <button className='button' onClick={() => props.handleViewChange('register')}>register</button>
+
     </nav>
   )
 }

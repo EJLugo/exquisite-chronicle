@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { createHash } = require('./encrypt.js');
+const { createHash } = require('./password.js');
 
 const sequelize = new Sequelize({
 	database: 'exquisite_chronicle_db',
@@ -45,7 +45,8 @@ const CompletedStory = sequelize.define('completed_story', {
 	title: Sequelize.STRING,
 	genre: Sequelize.STRING,
 	body: Sequelize.TEXT,
-	// Array of user_id ?
+	contributors: Sequelize.STRING,
+	creator: Sequelize.INTEGER,
 });
 
 User.hasMany(Prompt);

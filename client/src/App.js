@@ -11,21 +11,17 @@ import ViewAllPrompts from './components/ViewAllPrompts';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import PromptForm from './components/PromptForm';
+import RenderUserChapters from './components/RenderUserChapters';
+
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       currentUser: null,
-      formData: {
-        username: '',
-        password: '',
-        date: ''
-      },
       userView: 'welcome',
       loggedIn: false,
       token: null,
-
     };
     this.handleChange = this.handleChange.bind(this);
     this.renderUserview = this.renderUserview.bind(this);
@@ -42,19 +38,26 @@ class App extends Component {
     }));
   }
 
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(this.state.formData);
+    // await this.createUser(this.state.formData);
+  }
+
+ //  async registerUser(e) {
+ //   e.preventDefault();
+ //   const resp = await createUser(this.state.formData);
+ //   this.setState({token: resp.data.token});
+ //   this.getUser();
+ // }
+
   renderUserview() {
-    const { userView, formData } = this.state;
-    const { username, password, date } = formData;
+    const { userView } = this.state;
     switch (userView) {
 
     case 'register':
       return (
         <RegisterForm
-          handleChange={this.handleChange}
-          username={username}
-          password={password}
-          date={date}
-          swapUserForm={this.swapUserForm}
         />
       );
     break;
@@ -62,10 +65,7 @@ class App extends Component {
     case 'login':
       return (
         <LoginForm
-          handleChange={this.handleChange}
-          username={username}
-          password={password}
-          swapUserForm={this.swapUserForm}
+
         />
       );
     break;
@@ -88,6 +88,10 @@ class App extends Component {
         <NavBar handleViewChange={this.setView}/>
         {this.renderUserview()}
         <Dropdown />
+        <RenderUserChapters
+          loggedIn={this.state.loggedIn}
+          currentUser={this.state.currentUser}/>
+        <PromptForm />
         <Footer />
       </div>
     );
