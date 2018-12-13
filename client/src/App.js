@@ -72,6 +72,8 @@ class App extends Component {
 		return <ViewUserStories />
 		case 'prompts':
 		return <ViewAllPrompts token={this.state.token}/>
+		case 'create-prompt':
+		return <PromptForm token={this.state.token} currentUser={this.state.currentUser}/>
 		case 'contributions':
 		return <ViewUserContributions token={this.state.token} currentUser={this.state.currentUser}/>
     default:
