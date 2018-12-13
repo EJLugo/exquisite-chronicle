@@ -26,8 +26,22 @@ chapterRouter.get('/:id', passport.authenticate('jwt', { session: false }), asyn
 	}
 });
 
+// Get all user's chapters
+chapterRouter.get('/user-chapters', passport.authenticate('jwt', { session: false }), async (req, res) => {
+	try {
+		const chapters = await Chapter.findAll({
+			where: {
+				user_id: req.user.id,
+			},
+		});
+		res.json(chapters);
+	} catch (e) {
+		res.json({ msg: e.message });
+	}
+});
+
 // POST new chapter
-chapterRouter.post('/', passport.authenticate('jwt', { session: false }), async (req, res) => {
+chapterRouter.post('/create', passport.authenticate('jwt', { session: false }), async (req, res) => {
 	try {
 		const { user } = req;
 		const chapter = await Chapter.create({
