@@ -43,7 +43,7 @@ completedStoryRouter.get('/:id', async (req, res) => {
 });
 
 // POST new story
-completedStoryRouter.post('/', passport.authenticate('jwt', { session: false }), async (req, res) => {
+completedStoryRouter.post('/create', passport.authenticate('jwt', { session: false }), async (req, res) => {
 	try {
 		const prompt = await Prompt.findByPk(req.body.prompt_id);
 		const chapters = await Chapter.findAll({

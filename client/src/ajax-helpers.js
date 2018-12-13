@@ -187,8 +187,8 @@ export async function allUserChapters(token){
 // Post new chapter
 export async function createChapter(token, chapter_data){
 	try{
-		const chapter = await axios.post(`${BASE_URL}/chapters/create`, {
-			header: {
+		const chapter = await axios.post(`${BASE_URL}/chapters/create`, chapter_data, {
+			headers: {
 				'Authorization': `Bearer ${token}`
 			}
 		});
@@ -221,9 +221,11 @@ export async function oneCompletedStory(story_id){
 }
 
 // Create new story
-export async function createCompletedStory(token, story_data){
+export async function createCompletedStory(token, prompt_id){
+	const data = {prompt_id: prompt_id}
 	try{
-		const story = await axios.post(`${BASE_URL}/stories`, story_data, {
+		console.log('ajax');
+		const story = await axios.post(`${BASE_URL}/stories/create`, data, {
 			headers: {
 				'Authorization': 	`Bearer ${token}`
 			}

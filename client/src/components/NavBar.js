@@ -19,6 +19,7 @@ if(!loggedIn){
       <button className='button' onClick={() => props.handleViewChange('welcome')}>Home</button>
       <button className='button' onClick={() => props.handleViewChange('stories')}>Stories</button>
       <button className='button' onClick={() => props.handleViewChange('prompts')}>Open Prompts</button>
+			<button className='button' onClick={() => props.handleViewChange('create-prompt')}>Create a Prompt</button>
 			<button className='button' onClick={() => props.handleViewChange('contributions')}>My Contributions</button>
     </nav>
 	)};

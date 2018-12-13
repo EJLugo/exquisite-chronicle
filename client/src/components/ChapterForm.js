@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { createChapter, createCompletedStory, deleteUserPrompt } from '../ajax-helpers.js';
 
 export default class ChapterForm extends Component{
   constructor(props) {
@@ -20,9 +21,19 @@ export default class ChapterForm extends Component{
   });
   }
 
-  handleSubmit(e) {
-    alert('A chapter was submitted: ' + this.state.formData.body);
+  async handleSubmit(e) {
     e.preventDefault();
+		const token = this.props.token;
+		const chapterData = {
+			body: this.state.formData.body,
+			prompt_id: this.props.prompt_id
+		}
+		const chapter = await createChapter(token, chapterData);
+		if(chapter.story){
+			console.log('should delete');
+			await createCompletedStory(token, chapter.chapter.prompt_id);
+			await deleteUserPrompt(token, chapter.chapter.prompt_id);
+		}
   }
 
   render(){

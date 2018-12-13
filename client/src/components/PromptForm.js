@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './PromptForm.css';
 import Dropdown from './Dropdown';
 import DropdownChapterLength from './DropdownChapterLength';
 
@@ -58,7 +59,10 @@ export default class PromptForm extends Component{
         onSubmit={this.handleSubmit}
         >
 
-        <Dropdown onSelectGenre={this.handleGenre}/>
+        <Dropdown
+          onSelectGenre={this.handleGenre}
+          className='dropdown'
+        />
 
         <label>body:</label>
         <textarea
@@ -75,7 +79,7 @@ export default class PromptForm extends Component{
           onChange={this.handleChange}
           value={this.state.formData.max_chapters}
         />
-        
+
         <DropdownChapterLength onSelectLength={this.handleLength}/>
         <input
           type='submit'
