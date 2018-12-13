@@ -1,7 +1,6 @@
 const axios = require('axios');
 
 const BASE_URL = 'http://localhost:3001';
-// Token passed down from state
 
 // User Router ***********************************
 
@@ -62,9 +61,13 @@ export async function deleteUser(user_id){
 //Prompt Router **********************************
 
 // Get all prompts by genre
-export async function allPrompts(genre){
+export async function allPrompts(token, genre){
 	try{
-		const allPrompts = await axios.get(`${BASE_URL}/prompts/${genre}`);
+		const allPrompts = await axios.get(`${BASE_URL}/prompts/${genre}`, {
+			headers: {
+				'Authorization': `Bearer ${token}`
+			}
+		});
 		return allPrompts.data;
 	}catch(e){
 		console.log(e);
@@ -231,7 +234,7 @@ export async function createCompletedStory(token, story_data){
 	}
 };
 
-// GET all user's stories 
+// GET all user's stories
 export async function allUserStories(token){
 	try {
 		const stories = await axios.get(`${BASE_URL}/stories/user-stories`, {
