@@ -13,7 +13,7 @@ import Footer from './components/Footer';
 import ChapterForm from './components/ChapterForm';
 import RenderUserChapters from './components/RenderUserChapters';
 import ViewUserContributions from './components/ViewUserContributions';
-
+import PromptForm from './components/PromptForm';
 
 class App extends Component {
   constructor(props) {
@@ -90,6 +90,7 @@ class App extends Component {
       <div className="app-body">
         <NavBar handleViewChange={this.setView} token={this.state.token}/>
         {this.renderUserview()}
+<PromptForm />
         <Footer />
       </div>
     );

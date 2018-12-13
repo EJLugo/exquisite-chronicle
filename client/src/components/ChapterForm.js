@@ -28,7 +28,7 @@ export default class ChapterForm extends Component{
   render(){
     return(
       <form
-        className='prompt-form'
+        className='chapter-form'
         onSubmit={this.handleSubmit}
         >
         <label>
