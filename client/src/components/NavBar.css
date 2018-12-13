@@ -13,27 +13,28 @@ nav {
 	color: white;
 	font-size: 24pt;
 	font-family: 'Staatliches';
+	border-radius: 20px;
 }
 
 .button:hover {
 	height: 100px;
 	width: 135px;
 	background-color: #2a5b67;
-	animation: button-effect .5s linear;
+	animation: button-effect 1s;
 }
 
 @keyframes button-effect {
 	0% {
-		transform: translateY(0) rotateX(0) scale(1);
+		transform: rotateY(0) translateX(0) scale(1);
 		transform-origin: 50% 0%;
 	}
-	50% {
+	/* 50% {
 		transform: translateY(-50%) rotateX(90deg) scale(2);
 		transform-origin: 50% 50%;
 		/* box-shadow: 5px 5px lightgrey; */
-	}
+	/* } */
 	100% {
-		transform: translateY(-100%) rotateX(180deg) scale(1);
+		transform: rotateY(180deg) translateX(100%) scale(1);
 		transform-origin: 50% 100%;
 		/* box-shadow: 10px 10px lightgrey; */
 	}
