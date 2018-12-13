@@ -5,13 +5,11 @@ import './App.css';
 import RegisterForm from './components/RegisterForm';
 import LoginForm from './components/LoginForm';
 import Welcome from './components/Welcome';
-import Dropdown from './components/Dropdown';
 import ViewCompletedStories from './components/ViewCompletedStories';
 import ViewAllPrompts from './components/ViewAllPrompts';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
-import PromptForm from './components/PromptForm';
-import RenderUserChapters from './components/RenderUserChapters';
+import ViewUserContributions from './components/ViewUserContributions';
 
 
 class App extends Component {
@@ -20,12 +18,12 @@ class App extends Component {
     this.state = {
       currentUser: null,
       userView: 'welcome',
-      loggedIn: false,
-      token: null,
+      token: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.renderUserview = this.renderUserview.bind(this);
     this.setView = this.setView.bind(this);
+		this.storeToken = this.storeToken.bind(this);
   }
 
   handleChange(event) {
@@ -41,34 +39,37 @@ class App extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     console.log(this.state.formData);
-    // await this.createUser(this.state.formData);
   }
 
+	storeToken(user_data){
+		console.log(user_data);
+		this.setState({
+			token: user_data.token,
+			currentUser: {
+				username: user_data.user.username,
+				id: user_data.user.id,
+			}
 
- //  async registerUser(e) {
- //   e.preventDefault();
- //   const resp = await createUser(this.state.formData);
- //   this.setState({token: resp.data.token});
- //   this.getUser();
- // }
+		})
+	};
 
   renderUserview() {
     const { userView } = this.state;
     switch (userView) {
-
     case 'register':
-      return (
-        <RegisterForm/>
-      );
-    break;
-
+    return <RegisterForm
+							storeToken={this.storeToken}
+						/>
     case 'login':
-      return (
-        <LoginForm
-        handleClick={this.handleClick.bind(this)}/>
-      );
-    break;
-
+    return <LoginForm
+							storeToken={this.storeToken}
+						/>
+		case 'stories':
+		return <ViewCompletedStories />
+		case 'prompts':
+		return <ViewAllPrompts />
+		case 'contributions':
+		return <ViewUserContributions token={this.state.token} currentUser={this.state.currentUser}/>
     default:
       return <Welcome />
     }
@@ -81,16 +82,10 @@ class App extends Component {
   }
 
   render() {
-    const { loggedIn, currentUser } = this.state;
     return (
-      <div className="app-body">
-        <NavBar handleViewChange={this.setView}/>
+      <div className="App">
+        <NavBar handleViewChange={this.setView} token={this.state.token}/>
         {this.renderUserview()}
-        <Dropdown />
-        <RenderUserChapters
-          loggedIn={this.state.loggedIn}
-          currentUser={this.state.currentUser}/>
-        <PromptForm />
         <Footer />
       </div>
     );

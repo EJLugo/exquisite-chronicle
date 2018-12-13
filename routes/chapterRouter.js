@@ -16,25 +16,26 @@ chapterRouter.get('/prompt/:id', passport.authenticate('jwt', { session: false }
 	}
 });
 
-// GET One chapter
-chapterRouter.get('/:id', passport.authenticate('jwt', { session: false }), async (req, res) => {
+// Get all user's chapters
+chapterRouter.get('/user-chapters', passport.authenticate('jwt', { session: false }), async (req, res) => {
 	try {
-		const story = await Chapter.findByPk(req.params.id);
-		res.json(story.dataValues);
+		const user = req.user;
+		const chapters = await Chapter.findAll({
+			where: {
+				user_id: user.id,
+			},
+		});
+		res.json(chapters);
 	} catch (e) {
 		res.json({ msg: e.message });
 	}
 });
 
-// Get all user's chapters
-chapterRouter.get('/user-chapters', passport.authenticate('jwt', { session: false }), async (req, res) => {
+// GET One chapter
+chapterRouter.get('/:id', passport.authenticate('jwt', { session: false }), async (req, res) => {
 	try {
-		const chapters = await Chapter.findAll({
-			where: {
-				user_id: req.user.id,
-			},
-		});
-		res.json(chapters);
+		const story = await Chapter.findByPk(req.params.id);
+		res.json(story.dataValues);
 	} catch (e) {
 		res.json({ msg: e.message });
 	}

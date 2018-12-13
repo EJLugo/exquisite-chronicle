@@ -22,18 +22,6 @@ class ViewCompletedStories extends Component{
       ]
     }
   }
-  // async componentDidMount(){
-  //   try {
-  //     const data = await allCompletedStories();
-  //     this.state(
-  //       {
-  //         stories: data
-  //       }
-  //     )
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // }
 
   render(){
     return(

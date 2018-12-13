@@ -2,7 +2,7 @@ const promptRouter = require('express').Router();
 const { Prompt } = require('../models');
 const { passport } = require('../encrypt.js');
 
-// GET all prompts by genre
+//GET all prompts by genre
 promptRouter.get('/:genre', async (req, res) => {
 	try {
 		const { genre } = req.params;
@@ -28,8 +28,9 @@ promptRouter.get('/:id', async (req, res) => {
 });
 
 // GET all user's prompts
-promptRouter.post('/user-prompts', passport.authenticate('jwt', { session: false }), async (req, res) => {
+promptRouter.get('/user-prompts', passport.authenticate('jwt', { session: false }), async (req, res) => {
 	try {
+		console.log('prompts router');
 		const { user } = req;
 		const prompts = await Prompt.findAll({
 			where: {

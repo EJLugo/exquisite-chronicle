@@ -19,7 +19,7 @@ userRouter.post('/login', async (req, res) => {
 				id: user.id,
 				username: user.username,
 			});
-			res.json({ token });
+			res.json({ user, token });
 		} else {
 			throw Error('Invalid Credentials');
 		}
@@ -38,6 +38,16 @@ userRouter.post('/signup', async (req, res) => {
 			username,
 		});
 		res.json({ token });
+	} catch (e) {
+		res.json({ msg: e.message });
+	}
+});
+
+// Get Current user
+userRouter.get('/currentuser', passport.authenticate('jwt', { session: false }), async (req, res) => {
+	try {
+		const currentUser = req.user;
+		res.json(currentUser);
 	} catch (e) {
 		res.json({ msg: e.message });
 	}
