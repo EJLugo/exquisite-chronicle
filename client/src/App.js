@@ -10,6 +10,8 @@ import ViewUserStories from './components/ViewUserStories';
 import ViewAllPrompts from './components/ViewAllPrompts';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
+import ChapterForm from './components/ChapterForm';
+import RenderUserChapters from './components/RenderUserChapters';
 import ViewUserContributions from './components/ViewUserContributions';
 
 
@@ -85,7 +87,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="app-body">
         <NavBar handleViewChange={this.setView} token={this.state.token}/>
         {this.renderUserview()}
         <Footer />
