@@ -34,7 +34,9 @@ export default class ViewAllPrompts extends React.Component{
 						genre={prompt.genre}
 						body={prompt.body}
 						max_chapters={prompt.max_chapters}
-						chapter_length={prompt.chapter_length}/>
+						chapter_length={prompt.chapter_length}
+						setView={this.props.setView}
+					/>
 				))
 			)
 		}	else {

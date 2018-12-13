@@ -32,8 +32,8 @@ export default class PromptForm extends Component{
 
   async handleSubmit(e) {
     e.preventDefault();
-		console.log(this.props.token, this.state.formData);
 		await createPrompt(this.props.token, this.state.formData);
+		this.props.setView('contributions')
   }
 
   handleGenre = (genreValue) => {
