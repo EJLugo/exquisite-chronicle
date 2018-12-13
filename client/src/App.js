@@ -84,7 +84,7 @@ class App extends Component {
   render() {
     const { loggedIn, currentUser } = this.state;
     return (
-      <div className="App">
+      <div className="app-body">
         <NavBar handleViewChange={this.setView}/>
         {this.renderUserview()}
         <Dropdown />

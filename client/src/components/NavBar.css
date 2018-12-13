@@ -17,7 +17,7 @@ nav {
 	height: 40px;
 	width: 70px;
 	background-color: grey;
-	animation: button-effect 1.5s linear;
+	animation: button-effect .5s linear;
 }
 
 @keyframes button-effect {
