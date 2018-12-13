@@ -2,7 +2,23 @@ const promptRouter = require('express').Router();
 const { Prompt } = require('../models');
 const { passport } = require('../encrypt.js');
 
-//GET all prompts by genre
+// GET all prompts by genre
+
+// GET all user's prompts
+promptRouter.get('/user-prompts', passport.authenticate('jwt', { session: false }), async (req, res) => {
+	try {
+		const { user } = req;
+		const prompts = await Prompt.findAll({
+			where: {
+				user_id: user.id,
+			},
+		});
+		res.json(prompts);
+	} catch (e) {
+		res.json({ msg: e.message });
+	}
+});
+
 promptRouter.get('/:genre', async (req, res) => {
 	try {
 		const { genre } = req.params;
@@ -22,22 +38,6 @@ promptRouter.get('/:id', async (req, res) => {
 	try {
 		const prompt = await Prompt.findByPk(req.params.id);
 		res.json(prompt.dataValues);
-	} catch (e) {
-		res.json({ msg: e.message });
-	}
-});
-
-// GET all user's prompts
-promptRouter.get('/user-prompts', passport.authenticate('jwt', { session: false }), async (req, res) => {
-	try {
-		console.log('prompts router');
-		const { user } = req;
-		const prompts = await Prompt.findAll({
-			where: {
-				user_id: user.id,
-			},
-		});
-		res.json(prompts);
 	} catch (e) {
 		res.json({ msg: e.message });
 	}

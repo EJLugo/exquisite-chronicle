@@ -1,14 +1,13 @@
-import React, {Component} from 'react';
+import React from 'react';
 import ViewOnePrompt from './ViewOnePrompt';
 
-class ViewAllPrompts extends Component{
-
-
-  render(){
+export default function ViewAllPrompts(props){
+	const prompts = props.prompts;
+	console.log(prompts);
     return(
       <div>
         <h2>All Prompts</h2>
-        {this.state.prompts.map(prompt =>(
+        {prompts.map(prompt =>(
           <ViewOnePrompt
             key={prompt.id}
             genre={prompt.genre}
@@ -18,6 +17,4 @@ class ViewAllPrompts extends Component{
         ))}
       </div>
     )
-  }
-}
-export default ViewAllPrompts;
+};
