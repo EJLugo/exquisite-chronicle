@@ -90,7 +90,6 @@ class App extends Component {
       <div className="app-body">
         <NavBar handleViewChange={this.setView} token={this.state.token}/>
         {this.renderUserview()}
-<PromptForm />
         <Footer />
       </div>
     );

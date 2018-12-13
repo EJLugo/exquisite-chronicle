@@ -187,8 +187,8 @@ export async function allUserChapters(token){
 // Post new chapter
 export async function createChapter(token, chapter_data){
 	try{
-		const chapter = await axios.post(`${BASE_URL}/chapters/create`, {
-			header: {
+		const chapter = await axios.post(`${BASE_URL}/chapters/create`, chapter_data, {
+			headers: {
 				'Authorization': `Bearer ${token}`
 			}
 		});

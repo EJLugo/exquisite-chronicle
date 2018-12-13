@@ -1,4 +1,5 @@
 import React from 'react';
+import ChapterForm from './ChapterForm.js'
 
 function ViewOnePrompt(props){
   return (
@@ -7,7 +8,7 @@ function ViewOnePrompt(props){
       <p>{props.body}</p>
       <h4>{props.max_chapters}</h4>
       <h4>{props.chapter_length}</h4>
-
+			<ChapterForm prompt_id={props.id} token={props.token}/>
     </div>
   )
 }

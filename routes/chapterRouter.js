@@ -2,6 +2,21 @@ const chapterRouter = require('express').Router();
 const { Chapter } = require('../models');
 const { passport } = require('../encrypt.js');
 
+// POST new chapter
+chapterRouter.post('/create', passport.authenticate('jwt', { session: false }), async (req, res) => {
+	try {
+		const { user } = req;
+		const chapter = await Chapter.create({
+			body: req.body.body,
+			user_id: user.id,
+			prompt_id: req.body.prompt_id,
+		});
+		res.json(chapter);
+	} catch (e) {
+		res.json({ msg: e.message });
+	}
+});
+
 // Get all prompt's chapters
 chapterRouter.get('/prompt/:id', passport.authenticate('jwt', { session: false }), async (req, res) => {
 	try {
@@ -41,20 +56,6 @@ chapterRouter.get('/:id', passport.authenticate('jwt', { session: false }), asyn
 	}
 });
 
-// POST new chapter
-chapterRouter.post('/create', passport.authenticate('jwt', { session: false }), async (req, res) => {
-	try {
-		const { user } = req;
-		const chapter = await Chapter.create({
-			body: req.body.body,
-			user_id: user.id,
-			prompt_id: req.body.prompt_id,
-		});
-		res.json(chapter);
-	} catch (e) {
-		res.json({ msg: e.message });
-	}
-});
 
 module.exports = {
 	chapterRouter,
