@@ -1,33 +1,13 @@
-import React, {Component} from 'react';
+import React from 'react';
 import ViewOneCompletedStory from './ViewOneCompletedStory';
-// import allCompletedStories from '../ajax-helpers';
 
-class ViewCompletedStories extends Component{
-  constructor(props){
-    super(props);
-    this.state = {
-      stories: [
-        {title: "Title One",
-         genre: "horror",
-         body: "Lorem ipsum dolor sit amet,"
-        },
-        {title: "Title Two",
-         genre: "adventure",
-         body: "Lorem ipsum dolor sit amet,"
-        },
-        {title: "Title Three",
-         genre: "fiction",
-         body: "Lorem ipsum dolor sit amet,"
-        },
-      ]
-    }
-  }
+export default function ViewCompletedStories(props){
+	const stories = props.stories;
 
-  render(){
     return(
       <div>
         <h2>Completed Stories</h2>
-        {this.state.stories.map(story => (
+        {stories.map(story => (
           <ViewOneCompletedStory
             key={story.id}
             title={story.title}
@@ -37,6 +17,4 @@ class ViewCompletedStories extends Component{
         ))}
       </div>
     )
-  }
-}
-export default ViewCompletedStories;
+};

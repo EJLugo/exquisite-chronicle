@@ -28,7 +28,7 @@ export default class RegisterForm extends Component{
   handleSubmit = async (e) => {
     e.preventDefault();
 		const user = await createUser(this.state.formData);
-		this.props.storeToken(user.data.token);
+		this.props.storeToken(user.data);
   }
 
   render() {

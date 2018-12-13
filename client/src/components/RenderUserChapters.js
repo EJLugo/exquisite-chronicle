@@ -1,28 +1,17 @@
-import React, {Component} from 'react';
+import React from 'react';
+import ViewOneChapter from './ViewOneChapter.js';
 
-export default class RenderUserChapters extends Component {
-  
-  renderChapters(){
-    if (this.props.loggedIn) {
-      return (
-        <div>
-          <h2>{ `Welcome Back ${ this.props.currentUser }` }</h2>
-          <p>{this.state.chapters}</p>
-        </div>
-      );
-    } else {
-      return (
-        <h2>Log in to see this section</h2>
-      );
-    }
-  }
-
-  render (){
+export default function RenderUserChapters(props){
+	const chapters = props.chapters;
     return(
       <div>
-        <h1>Exquisite Chronicle</h1>
-        { this.renderChapters() }
+        <h1>Chapters</h1>
+				{chapters.map(chapter => (
+					<ViewOneChapter
+						key={chapter.id}
+						body={chapter.body}
+					/>
+				))}
       </div>
-    )
-  }
-}
+		)
+};
