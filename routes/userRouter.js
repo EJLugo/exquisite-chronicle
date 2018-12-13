@@ -5,7 +5,7 @@ const { compare } = require('../password.js');
 
 
 // User Log In
-userRouter.get('/login', async (req, res) => {
+userRouter.post('/login', async (req, res) => {
 	try {
 		const { username, password } = req.body;
 		const user = await User.find({

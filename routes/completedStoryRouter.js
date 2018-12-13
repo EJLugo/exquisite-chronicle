@@ -3,9 +3,9 @@ const { CompletedStory, Prompt, Chapter } = require('../models');
 const { passport } = require('../encrypt.js');
 
 // GET all completed stories by genre
-completedStoryRouter.get('/', async (req, res) => {
+completedStoryRouter.get('/:genre', async (req, res) => {
 	try {
-		const { genre } = req.body;
+		const { genre } = req.params;
 		const stories = await CompletedStory.findAll({
 			where: {
 				genre,

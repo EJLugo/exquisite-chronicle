@@ -1,135 +1,42 @@
 const axios = require('axios');
 
 const BASE_URL = 'http://localhost:3001';
+// Token passed down from state
 
-//GET Request
-async function getUser(user_id, token){
+// User Router ***********************************
+
+// User Login
+export async function login(user_data){
+	try {
+		const user = await axios.post(`${BASE_URL}/users/login`, user_data);
+		return user;
+	} catch (e) {
+		console.log(e);
+	}
+};
+
+// User Sign up - create user
+export async function createUser(user_data){
 	try{
-		const user = await axios.get(`${BASE_URL}/users/${user_id}`, {
-			headers:{
-				'Authorization': `Bearer ${token}`
-			}
-		});
-		return user.data;
+		const user = await axios.post(`${BASE_URL}/users/signup`, user_data);
+		return user;
 	}catch(e){
 		console.log(e);
 	}
 };
 
-async function allCompletedStories(){
+// Update user info
+export async function updateUser(user_data){
 	try{
-		const allCompletedStories = await axios.get(`${BASE_URL}/stories`);
-		return allCompletedStories.data;
-	}catch(e){
-		console.log(e);
-	}
-};
-
-async function oneCompletedStory(story_id){
-	try{
-		const oneCompletedStory = await axios.get(`${BASE_URL}/stories/${story_id}`);
-		return oneCompletedStory.data;
-	}catch(e){
-		console.log(e);
-	}
-}
-
-async function allPrompts(){
-	try{
-		const allPrompts = await axios.get(`${BASE_URL}/prompts`);
-		return allPrompts.data;
-	}catch(e){
-		console.log(e);
-	}
-};
-
-async function allUserPrompts(user_id){
-	try{
-		const userPrompt = await axios.get(`${BASE_URL}/user/${user_id}/prompts`);
-		return userPrompt.data;
-	}catch(e){
-		console.log(e);
-	}
-};
-
-async function allUserChapters(user_id){
-	try{
-		const userChapter = await axios.get(`${BASE_URL}/user/${user_id}/chapters`);
-		return userChapter.data;
-	}catch(e){
-		console.log(e);
-	}
-};
-
-async function oneUserChapter(user_id, chapter_id){
-	try{
-		const userChapter = await axios.get(`${BASE_URL}/user/${user_id}/chapters/${chapter_id}`);
-		return userChapter.data;
-	}catch(e){
-		console.log(e);
-	}
-};
-
-//POST Request
-async function createUser(user_data){
-	console.log('ajax create user');
-	try{
-		const user = await axios.post(`${BASE_URL}/users`, user_data);
-		return user.data;
-	}catch(e){
-		console.log(e);
-	}
-};
-
-async function createPrompt(user_id, prompt_data){
-	try{
-		const prompt = await axios.post(`${BASE_URL}/user/${user_id}/prompts`, prompt_data);
-		return prompt.data;
-	}catch(e){
-		console.log(e);
-	}
-};
-
-async function createChapter(prompt_id, chapter_data){
-	try{
-		const chapter = await axios.post(`${BASE_URL}/prompts/${prompt_id}/chapters`);
-		return chapter.data;
-	}catch(e){
-		console.log(e);
-	}
-};
-
-async function createCompletedStory(story_data){
-	try{
-		const story = await axios.post(`${BASE_URL}/stories`, story_data);
-		return story.data;
-	}catch(e){
-		console.log(e);
-	}
-};
-
-//PUT Request
-async function updateUser(user_id, user_data){
-	try{
-		const updatedUser = await axios.put(`${BASE_URL}/users/${user_id}`, user_data);
+		const updatedUser = await axios.put(`${BASE_URL}/users/update`, user_data);
 		return updatedUser;
 	}catch(e){
 		console.log(e);
 	}
 };
 
-async function addChapterToPrompt(prompt_id, user_id, chapter_id){
-	try{
-		const chapter_data = await oneUserChapter(user_id, chapter_id);
-		const updatedPrompt = await axios.put(`${BASE_URL}/prompts/${prompt_id}`, chapter_data);
-		return updatedPrompt.data;
-	}catch(e){
-		console.log(e);
-	}
-};
-
-//DELETE Request
-async function deleteUser(user_id){
+// Delete user
+export async function deleteUser(user_id){
 	try{
 		const deletedUser = await axios.delete(`${BASE_URL}/users/${user_id}`);
 		return deletedUser;
@@ -138,29 +45,174 @@ async function deleteUser(user_id){
 	}
 };
 
-async function deleteUserPrompt(user_id, prompt_id){
+//Prompt Router **********************************
+
+// Get all prompts by genre
+export async function allPrompts(genre){
 	try{
-		const deletedPrompt = await axios.delete(`${BASE_URL}/users/${user_id}/prompts/${prompt_id}`);
+		const allPrompts = await axios.get(`${BASE_URL}/prompts/${genre}`);
+		return allPrompts.data;
+	}catch(e){
+		console.log(e);
+	}
+};
+
+// Get one prompt by id
+export async function getOnePrompt(id){
+	try {
+		const prompt = await axios.get(`${BASE_URL}/prompts/${id}`);
+		return prompt;
+	} catch(e) {
+		console.log(e);
+	}
+}
+
+// Get all user's prompts
+export async function allUserPrompts(token){
+	try{
+		const userPrompt = await axios.get(`${BASE_URL}/prompts/user-prompts`, {
+			headers: {
+				'Authorization': `Bearer ${token}`
+			},
+		});
+		return userPrompt.data;
+	}catch(e){
+		console.log(e);
+	}
+};
+
+// Create new prompt
+export async function createPrompt(token, prompt_data){
+	try{
+		const prompt = await axios.post(`${BASE_URL}/prompts/create`, prompt_data, {
+			headers: {
+				'Authorization': `Bearer ${token}`
+			},
+		});
+		return prompt.data;
+	}catch(e){
+		console.log(e);
+	}
+};
+
+// Update Prompt
+export async function updatePrompt(token, prompt_id, prompt_data){
+	try{
+		const updatedPrompt = await axios.put(`${BASE_URL}/prompts/${prompt_id}/update`, prompt_data, {
+			headers:{
+				'Authorization': `Bearer ${token}`
+			}
+		});
+		return updatedPrompt.data;
+	}catch(e){
+		console.log(e);
+	}
+};
+
+// Delete Prompt
+export async function deleteUserPrompt(token, prompt_id){
+	try{
+		const deletedPrompt = await axios.delete(`${BASE_URL}/prompts/${prompt_id}/delete`, {
+			headers: {
+				'Authorization': `Bearer ${token}`
+			}
+		});
 		return deletedPrompt;
 	}catch(e){
 		console.log(e);
 	}
 };
 
-module.exports ={
-	getUser,
-	allCompletedStories,
-	oneCompletedStory,
-	allPrompts,
-	allUserPrompts,
-	allUserChapters,
-	oneUserChapter,
-	createUser,
-	createPrompt,
-	createChapter,
-	createCompletedStory,
-	updateUser,
-	addChapterToPrompt,
-	deleteUser,
-	deleteUserPrompt,
+// Chapter Router **********************************
+
+// Get all prompt's chapters
+export async function allPromptsChapters(token, prompt_id){
+	try {
+		const chapters = await axios.get(`${BASE_URL}/chapters/${prompt_id}`, {
+			headers: {
+				'Authorization': `Bearer ${token}`
+			}
+		});
+		return chapters;
+	} catch (e){
+		console.log(e);
+	}
+}
+
+// Get one chapter
+export async function oneUserChapter(token, chapter_id){
+	try{
+		const userChapter = await axios.get(`${BASE_URL}/chapters/${chapter_id}`, {
+			headers: {
+				'Authorization': `Bearer ${token}`
+			}
+		});
+		return userChapter.data;
+	}catch(e){
+		console.log(e);
+	}
+};
+
+// Get all user's chapters
+export async function allUserChapters(token, user_id){
+	try{
+		const userChapter = await axios.get(`${BASE_URL}/chapters/user-chapters`, {
+			headers: {
+				'Authorization': `Bearer ${token}`
+			}
+		});
+		return userChapter.data;
+	}catch(e){
+		console.log(e);
+	}
+};
+
+// Post new chapter
+export async function createChapter(token, chapter_data){
+	try{
+		const chapter = await axios.post(`${BASE_URL}/chapters/create`, {
+			header: {
+				'Authorization': `Bearer ${token}`
+			}
+		});
+		return chapter.data;
+	}catch(e){
+		console.log(e);
+	}
+};
+
+// Story Router *************************************
+
+// Get all completed stories by genre
+export async function allCompletedStories(genre){
+	try{
+		const allCompletedStories = await axios.get(`${BASE_URL}/stories/${genre}`);
+		return allCompletedStories.data;
+	}catch(e){
+		console.log(e);
+	}
+};
+
+// Get one completed story by id
+export async function oneCompletedStory(story_id){
+	try{
+		const oneCompletedStory = await axios.get(`${BASE_URL}/stories/${story_id}`);
+		return oneCompletedStory.data;
+	}catch(e){
+		console.log(e);
+	}
+}
+
+// Create new story
+export async function createCompletedStory(token, story_data){
+	try{
+		const story = await axios.post(`${BASE_URL}/stories`, story_data, {
+			headers: {
+				'Authorization': 	`Bearer ${token}`
+			}
+		});
+		return story.data;
+	}catch(e){
+		console.log(e);
+	}
 };
