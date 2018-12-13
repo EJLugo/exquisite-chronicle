@@ -6,7 +6,7 @@ export default (props) => (
     className='register-form'
     // onSubmit={props.handleSubmit}
     >
-
+		<div className='inputs'>
     <label htmlFor="username">Username</label>
 
     <input
@@ -17,7 +17,8 @@ export default (props) => (
       // value={props.username}
     />
 
-    <label htmlFor="password">Password</label>
+    <label
+			htmlFor="password">Password</label>
 
     <input
       type="text"
@@ -26,10 +27,12 @@ export default (props) => (
       // onChange={props.handleChange}
       // value={props.password}
     />
+		</div>
 
     <input
       type="submit"
       value="Login"
     />
+
   </form>
 )

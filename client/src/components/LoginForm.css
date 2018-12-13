@@ -1,0 +1,8 @@
+.register-form {
+	border: solid red;
+}
+
+.inputs {
+	border: solid blue;
+	display: grid;
+}

@@ -9,8 +9,8 @@ export default class Footer extends Component {
   }
   render() {
     return (
-      <footer>
-        <h4>{`\xA9 ${this.state.date}`}</h4>
+      <footer className= 'footer-text'>
+        <h8>{`\xA9 ${this.state.date}`}</h8>
       </footer>
     );
   }
