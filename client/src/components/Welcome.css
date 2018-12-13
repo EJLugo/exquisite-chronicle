@@ -1,9 +1,3 @@
-body {
-	background-image: URL("AdobeStock_182151650_100DPI.jpg");
-	background-size: cover;
-	/* background-repeat: no-repeat; */
-	background-color: white;
-}
 
 .welcome-container {
 	margin: 200px 150px 200px 100px;

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { login } from '../ajax-helpers.js'
 import './LoginForm.css'
 
 export default class LoginForm extends Component {
@@ -26,7 +27,8 @@ export default class LoginForm extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(this.state.formData);
+		const user = await login(this.state.formData);
+		this.props.storeToken(user.data);
   }
 
   render() {

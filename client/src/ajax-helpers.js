@@ -25,6 +25,20 @@ export async function createUser(user_data){
 	}
 };
 
+// Get current user
+export async function getCurrentUser(token){
+	try {
+		const currentUser = await axios.get(`${BASE_URL}/users/currentuser`, {
+			headers: {
+				'Authorization': `Bearer ${token}`
+			}
+		});
+		return currentUser;
+	} catch(e) {
+		console.log(e);
+	}
+}
+
 // Update user info
 export async function updateUser(user_data){
 	try{
@@ -154,7 +168,7 @@ export async function oneUserChapter(token, chapter_id){
 };
 
 // Get all user's chapters
-export async function allUserChapters(token, user_id){
+export async function allUserChapters(token){
 	try{
 		const userChapter = await axios.get(`${BASE_URL}/chapters/user-chapters`, {
 			headers: {
@@ -213,6 +227,20 @@ export async function createCompletedStory(token, story_data){
 		});
 		return story.data;
 	}catch(e){
+		console.log(e);
+	}
+};
+
+// GET all user's stories 
+export async function allUserStories(token){
+	try {
+		const stories = await axios.get(`${BASE_URL}/stories/user-stories`, {
+			headers: {
+				'Authorization': `Bearer ${token}`
+			}
+		});
+		return stories.data;
+	} catch (e) {
 		console.log(e);
 	}
 };
