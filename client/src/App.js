@@ -44,6 +44,7 @@ class App extends Component {
     // await this.createUser(this.state.formData);
   }
 
+
  //  async registerUser(e) {
  //   e.preventDefault();
  //   const resp = await createUser(this.state.formData);
@@ -57,16 +58,14 @@ class App extends Component {
 
     case 'register':
       return (
-        <RegisterForm
-        />
+        <RegisterForm/>
       );
     break;
 
     case 'login':
       return (
         <LoginForm
-
-        />
+        handleClick={this.handleClick.bind(this)}/>
       );
     break;
 

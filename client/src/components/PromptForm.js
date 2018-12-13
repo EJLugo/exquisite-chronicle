@@ -21,7 +21,7 @@ export default class PromptForm extends Component{
   }
 
   handleSubmit(e) {
-    alert('A chapter was submitted: ' + this.state.formData);
+    alert('A chapter was submitted: ' + this.state.formData.prompt);
     e.preventDefault();
   }
 

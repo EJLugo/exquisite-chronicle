@@ -1,8 +1,9 @@
 import React from 'react';
-
+import Logo from  './Logo'
 export default (props) => (
   <div>
     <h1>Welcome to Exquisite Chronicle</h1>
+    <Logo/>
     <p>We are developing a writing app where based off of the idea of Exquisite Corpse,
        a collaborative story chronicle that traces its roots to the Parisian Surrealist
        Movement.</p>
