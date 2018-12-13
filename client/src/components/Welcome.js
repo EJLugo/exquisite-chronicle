@@ -1,10 +1,14 @@
 import React from 'react';
 import './Welcome.css';
+import Logo from  './Logo';
 
 export default (props) => (
   <div className='welcome-container'>
+    <h1>Welcome to Exquisite Chronicle</h1>
+    <Logo/>
     <h1 className='title'>Welcome to Exquisite Chronicle</h1>
     <p className='welcome-text'>We are developing a writing app where based off of the idea of Exquisite Corpse,
+
        a collaborative story chronicle that traces its roots to the Parisian Surrealist
        Movement.</p>
     <p className='welcome-text'>Exquisite Corpse is written by several people, each of whom writes a word on a
