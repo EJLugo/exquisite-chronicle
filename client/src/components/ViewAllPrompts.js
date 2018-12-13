@@ -13,7 +13,6 @@ export default class ViewAllPrompts extends React.Component{
 	}
 
 	async setGenre(genre){
-		console.log('view all prompts ', this.props.token);
 		const token = this.props.token;
 		console.log(token);
 		const prompts = await allPrompts(token, genre);
