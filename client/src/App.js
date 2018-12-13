@@ -6,6 +6,7 @@ import RegisterForm from './components/RegisterForm';
 import LoginForm from './components/LoginForm';
 import Welcome from './components/Welcome';
 import ViewCompletedStories from './components/ViewCompletedStories';
+import ViewUserStories from './components/ViewUserStories';
 import ViewAllPrompts from './components/ViewAllPrompts';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
@@ -51,7 +52,6 @@ class App extends Component {
 				username: user_data.user.username,
 				id: user_data.user.id,
 			}
-
 		})
 	};
 
@@ -68,8 +68,10 @@ class App extends Component {
 						/>
 		case 'stories':
 		return <ViewCompletedStories />
+		case 'user-stories':
+		return <ViewUserStories />
 		case 'prompts':
-		return <ViewAllPrompts />
+		return <ViewAllPrompts token={this.state.token}/>
 		case 'contributions':
 		return <ViewUserContributions token={this.state.token} currentUser={this.state.currentUser}/>
     default:

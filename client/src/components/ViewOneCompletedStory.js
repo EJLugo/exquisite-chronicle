@@ -1,13 +1,11 @@
 import React from 'react';
 
-function ViewOneCompletedStory(props) {
+export default function ViewOneCompletedStory(props) {
+	const story = props.story;
   return (
     <div>
-      <h4>{props.title}</h4>
-      <h4>Genre: {props.genre}</h4>
-      <p>{props.body}</p>
+      <h4>{story.title}</h4>
+			<p>{story.body}</p>
     </div>
   )
-}
-
-export default ViewOneCompletedStory;
+};

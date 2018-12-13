@@ -10,6 +10,7 @@ export default class Dropdown extends Component{
 
     };
     this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
     this.handleGenreChange = this.handleGenreChange.bind(this);
   }
 
@@ -22,8 +23,8 @@ async handleChange(e){
 }
 
 handleSubmit(e) {
-    alert('You choose: ' + this.state.storyGenres);
-    e.preventDefault();
+	e.preventDefault();
+  this.props.setGenre(this.state.value)
 }
 
 handleGenreChange = () => {
@@ -34,7 +35,7 @@ handleGenreChange = () => {
   render(){
     return(
       <div>
-        <div >
+        <form onSubmit={this.handleSubmit}>
           <label >
             Select a story genre:
             <select className='dropdownList' value={this.state.value} onChange={this.handleChange}>
@@ -47,7 +48,8 @@ handleGenreChange = () => {
               }
             </select>
           </label>
-        </div>
+					<input type='submit' value="View Stories" />
+        </form>
     </div>
     )
   }
