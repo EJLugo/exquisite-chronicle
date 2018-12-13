@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './PromptForm.css';
 import Dropdown from './Dropdown';
 import DropdownChapterLength from './DropdownChapterLength';
+import { createPrompt } from '../ajax-helpers.js';
 
 export default class PromptForm extends Component{
   constructor(props){
@@ -11,7 +12,7 @@ export default class PromptForm extends Component{
         genre: '',
         body: '',
         max_chapters: 0,
-        chapter_length: ''
+        chapter_length: 1000
       }
     };
     this.handleChange = this.handleChange.bind(this);
@@ -29,8 +30,10 @@ export default class PromptForm extends Component{
     }));
   }
 
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault();
+		console.log(this.props.token, this.state.formData);
+		await createPrompt(this.props.token, this.state.formData);
   }
 
   handleGenre = (genreValue) => {
@@ -60,7 +63,7 @@ export default class PromptForm extends Component{
         >
 
         <Dropdown
-          onSelectGenre={this.handleGenre}
+          setGenre={this.handleGenre}
           className='dropdown'
         />
 
