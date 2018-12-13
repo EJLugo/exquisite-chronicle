@@ -69,7 +69,7 @@ class App extends Component {
 		case 'user-stories':
 		return <ViewUserStories />
 		case 'prompts':
-		return <ViewAllPrompts />
+		return <ViewAllPrompts token={this.state.token}/>
 		case 'contributions':
 		return <ViewUserContributions token={this.state.token} currentUser={this.state.currentUser}/>
     default:

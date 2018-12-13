@@ -61,9 +61,13 @@ export async function deleteUser(user_id){
 //Prompt Router **********************************
 
 // Get all prompts by genre
-export async function allPrompts(genre){
+export async function allPrompts(token, genre){
 	try{
-		const allPrompts = await axios.get(`${BASE_URL}/prompts/${genre}`);
+		const allPrompts = await axios.get(`${BASE_URL}/prompts/${genre}`, {
+			headers: {
+				'Authorization': `Bearer ${token}`
+			}
+		});
 		return allPrompts.data;
 	}catch(e){
 		console.log(e);

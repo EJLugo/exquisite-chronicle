@@ -1,5 +1,4 @@
 import React from 'react';
-import ViewCompletedStories from '../ViewCompletedStories';
 import ViewAllPrompts from '../ViewAllPrompts';
 import RenderUserChapters from '../RenderUserChapters';
 import { getCurrentUser, allUserPrompts, allUserChapters, allUserStories } from '../../ajax-helpers.js';
@@ -37,7 +36,6 @@ export default class ViewUserContributions extends React.Component{
 	render(){
 		return(
 			<div>
-				<ViewCompletedStories stories={this.state.stories} />
 				<ViewAllPrompts prompts={this.state.prompts} />
 				<RenderUserChapters chapters={this.state.chapters} />
 			</div>
