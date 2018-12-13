@@ -10,12 +10,15 @@ export default class Dropdown extends Component{
 
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleGenreChange = this.handleGenreChange.bind(this);
   }
 
-handleChange(e){
-    this.setState({
-      value: e.target.value,
+async handleChange(e){
+  let { value } = e.target;
+  await this.setState({
+      value
     });
+  this.handleGenreChange();
 }
 
 handleSubmit(e) {

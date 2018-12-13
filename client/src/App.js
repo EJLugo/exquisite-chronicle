@@ -9,14 +9,9 @@ import ViewCompletedStories from './components/ViewCompletedStories';
 import ViewAllPrompts from './components/ViewAllPrompts';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
-<<<<<<< HEAD
 import ChapterForm from './components/ChapterForm';
 import RenderUserChapters from './components/RenderUserChapters';
-=======
 import ViewUserContributions from './components/ViewUserContributions';
->>>>>>> master
-
-import PromptForm from './components/PromptForm';
 
 
 class App extends Component {

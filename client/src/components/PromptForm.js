@@ -19,22 +19,25 @@ export default class PromptForm extends Component{
 
   handleChange(e) {
     const { name, value } = e.target;
-    this.setState({
+    this.setState(prevState =>({
       formData: {
+        ...prevState.formData,
         [name]:value
       }
-    });
+    }));
   }
 
   handleSubmit(e) {
     e.preventDefault();
   }
+
   handleGenre = (genreValue) => {
-      this.setState({
-        formData: {
-          genre: genreValue
-        }
-      });
+    this.setState(prevState =>({
+      formData: {
+        ...prevState.formData,
+        genre:genreValue
+      }
+    }));
   }
 
   render(){
@@ -45,7 +48,8 @@ export default class PromptForm extends Component{
         onSubmit={this.handleSubmit}
         >
         <label>Choose a genre:</label>
-          <Dropdown onSelectGenre={this.handleGenre}/>
+
+        <Dropdown onSelectGenre={this.handleGenre}/>
 
         <label>body:</label>
         <input
