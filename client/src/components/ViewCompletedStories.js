@@ -7,7 +7,7 @@ export default function ViewCompletedStories(props){
     return(
       <div>
         <h2>Completed Stories</h2>
-        {this.state.stories.map(story => (
+        {stories.map(story => (
           <ViewOneCompletedStory
             key={story.id}
             title={story.title}

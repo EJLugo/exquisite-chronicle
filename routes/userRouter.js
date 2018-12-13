@@ -37,7 +37,7 @@ userRouter.post('/signup', async (req, res) => {
 			id,
 			username,
 		});
-		res.json({ token });
+		res.json({ user, token });
 	} catch (e) {
 		res.json({ msg: e.message });
 	}
