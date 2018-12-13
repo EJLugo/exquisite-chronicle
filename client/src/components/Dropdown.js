@@ -10,17 +10,25 @@ export default class Dropdown extends Component{
 
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleGenreChange = this.handleGenreChange.bind(this);
   }
 
-handleChange(e){
-    this.setState({
-      value: e.target.value,
+async handleChange(e){
+  let { value } = e.target;
+  await this.setState({
+      value
     });
+  this.handleGenreChange();
 }
 
 handleSubmit(e) {
     alert('You choose: ' + this.state.storyGenres);
     e.preventDefault();
+}
+
+handleGenreChange = () => {
+    let genre = this.state.value;
+    this.props.onSelectGenre(genre);
 }
 
   render(){

@@ -9,6 +9,8 @@ import ViewCompletedStories from './components/ViewCompletedStories';
 import ViewAllPrompts from './components/ViewAllPrompts';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
+import ChapterForm from './components/ChapterForm';
+import RenderUserChapters from './components/RenderUserChapters';
 import ViewUserContributions from './components/ViewUserContributions';
 
 
