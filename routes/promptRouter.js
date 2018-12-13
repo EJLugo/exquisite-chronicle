@@ -3,9 +3,9 @@ const { Prompt } = require('../models');
 const { passport } = require('../encrypt.js');
 
 // GET all prompts by genre
-promptRouter.get('/', async (req, res) => {
+promptRouter.get('/:genre', async (req, res) => {
 	try {
-		const { genre } = req.body;
+		const { genre } = req.params;
 		const prompts = await Prompt.findAll({
 			where: {
 				genre,
@@ -17,7 +17,7 @@ promptRouter.get('/', async (req, res) => {
 	}
 });
 
-// GET on prompt by id
+// GET one prompt by id
 promptRouter.get('/:id', async (req, res) => {
 	try {
 		const prompt = await Prompt.findByPk(req.params.id);
