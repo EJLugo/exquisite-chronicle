@@ -6,8 +6,9 @@ const cors = require('cors');
 const { userRouter } = require('./routes/userRouter.js');
 const { completedStoryRouter } = require('./routes/completedStoryRouter.js');
 const { promptRouter } = require('./routes/promptRouter');
+const { chapterRouter } = require('./routes/chapterRouter');
 
-const PORT = process.envPORT || 3001;
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(cors());
 app.use('/users', userRouter);
 app.use('/stories', completedStoryRouter);
 app.use('/prompts', promptRouter);
+app.use('/chapters', chapterRouter);
 
 app.get('/', (req, res) => {
 	res.json({
