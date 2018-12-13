@@ -33,3 +33,20 @@ Wireframes , ERD and API endpoints:
 ![ERD](https://github.com/EJLugo/exquisite-chronicle/blob/master/images/erdplus-diagram.png)
 ![API](https://github.com/EJLugo/exquisite-chronicle/blob/master/images/API-endpoints.png)
 ![Component Hierarchy](https://github.com/EJLugo/exquisite-chronicle/blob/master/images/component-hierarchy.JPG)
+
+///
+## MVP
+
+* Create an app that allows users to generate a story prompt that other users can than build off of until it makes a full story.
+* Each story length and genre will be determined by the user.
+* Users can only contribute if they have registered with the app and have logged in.
+* Registered users can search for prompts and read any chapters and completed stories.
+* Guest users can preview the site, but will not have permission to add to prompts.
+* Use a Spellcheck API to check for user spelling errors.
+
+## Post-MVP
+* Age validation for stories that may not be suitable for all readers
+* Allow a character limit for each chapter
+
+## Planning Materials
+* We used Trello in order to stay organized, and continued to break out tasks as we ran into problems or found that tasks would be best handled by more than one teammate.

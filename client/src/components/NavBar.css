@@ -3,21 +3,23 @@ nav {
 	padding-top: 30px;
 }
 .button {
-	height: 40px;
-	width: 70px;
-	background-color: lightblue;
+	height: 100px;
+	width: 135px;
+	background-color: #4d342e;
 	text-transform: uppercase;
 	justify-content: space-around;
-	font-family: 'Cutive Mono';
 	margin: 12px;
-	border: solid grey;
-
+	border: #4d342e;
+	color: white;
+	font-size: 24pt;
+	font-family: 'Staatliches';
 }
+
 .button:hover {
-	height: 40px;
-	width: 70px;
-	background-color: grey;
-	animation: button-effect 1.5s linear;
+	height: 100px;
+	width: 135px;
+	background-color: #2a5b67;
+	animation: button-effect .5s linear;
 }
 
 @keyframes button-effect {
