@@ -61,19 +61,27 @@ class App extends Component {
     case 'register':
     return <RegisterForm
 							storeToken={this.storeToken}
+							setView={this.setView}
 						/>
     case 'login':
     return <LoginForm
 							storeToken={this.storeToken}
+							setView={this.setView}
 						/>
 		case 'stories':
 		return <ViewCompletedStories />
 		case 'user-stories':
 		return <ViewUserStories />
 		case 'prompts':
-		return <ViewAllPrompts token={this.state.token}/>
+		return <ViewAllPrompts token={this.state.token}
+													 setView={this.setView}
+					/>
 		case 'create-prompt':
-		return <PromptForm token={this.state.token} currentUser={this.state.currentUser}/>
+		return <PromptForm token={this.state.token}
+											 currentUser={this.state.currentUser}
+											 setView={this.setView}
+
+						/>
 		case 'contributions':
 		return <ViewUserContributions token={this.state.token} currentUser={this.state.currentUser}/>
     default:

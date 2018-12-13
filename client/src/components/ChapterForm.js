@@ -34,6 +34,7 @@ export default class ChapterForm extends Component{
 			await createCompletedStory(token, chapter.chapter.prompt_id);
 			await deleteUserPrompt(token, chapter.chapter.prompt_id);
 		}
+		this.props.setView('contributions')
   }
 
   render(){

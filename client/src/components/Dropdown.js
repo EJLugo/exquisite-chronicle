@@ -5,8 +5,8 @@ export default class Dropdown extends Component{
     super(props);
     this.state = {
 
-      storyGenres: ['Tragedy','Science fiction','Fantasy','Mythology','Adventure','Mystery','Drama','Romance','Action / Adventure','Horror'],
-      value: 'Tragedy'
+      storyGenres: [' ', 'Tragedy','Science fiction','Fantasy','Mythology','Adventure','Mystery','Drama','Romance','Action / Adventure','Horror'],
+      value: ''
 
     };
     this.handleChange = this.handleChange.bind(this);

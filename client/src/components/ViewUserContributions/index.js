@@ -1,7 +1,6 @@
 import React from 'react';
-import ViewAllPrompts from '../ViewAllPrompts';
 import RenderUserChapters from '../RenderUserChapters';
-import { getCurrentUser, allUserPrompts, allUserChapters, allUserStories } from '../../ajax-helpers.js';
+import { allUserPrompts, allUserChapters, allUserStories } from '../../ajax-helpers.js';
 
 export default class ViewUserContributions extends React.Component{
 	constructor(props){
@@ -35,8 +34,7 @@ export default class ViewUserContributions extends React.Component{
 
 	render(){
 		return(
-			<div>
-				<ViewAllPrompts prompts={this.state.prompts} />
+			<div className = 'user-chapters'>
 				<RenderUserChapters chapters={this.state.chapters} />
 			</div>
 		)
