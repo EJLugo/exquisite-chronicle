@@ -2,6 +2,20 @@ const completedStoryRouter = require('express').Router();
 const { CompletedStory, Prompt, Chapter } = require('../models');
 const { passport } = require('../encrypt.js');
 
+// Get all user's stories
+completedStoryRouter.get('/user-stories', passport.authenticate('jwt', { session: false }), async (req, res) => {
+	try {
+		const stories = await CompletedStory.findAll({
+			where: {
+				creator: req.user.id,
+			},
+		});
+		res.json(stories);
+	} catch (e) {
+		res.json({ msg: e.message });
+	}
+});
+
 // GET all completed stories by genre
 completedStoryRouter.get('/:genre', async (req, res) => {
 	try {

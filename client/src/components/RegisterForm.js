@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { createUser } from '../ajax-helpers.js';
 
 export default class RegisterForm extends Component{
   constructor(props){
@@ -7,7 +8,7 @@ export default class RegisterForm extends Component{
       formData: {
         username: '',
         password: '',
-        date: ''
+        birthday: ''
       }
     };
     this.handleChange = this.handleChange.bind(this);
@@ -26,7 +27,8 @@ export default class RegisterForm extends Component{
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(this.state.formData);
+		const user = await createUser(this.state.formData);
+		this.props.storeToken(user.data.token);
   }
 
   render() {
@@ -56,7 +58,7 @@ export default class RegisterForm extends Component{
         <input
           type="date"
           id="date"
-          name="date"
+          name="birthday"
           onChange={this.handleChange}
           value={this.state.date}
         />
