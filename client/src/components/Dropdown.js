@@ -48,7 +48,6 @@ handleGenreChange = () => {
               }
             </select>
           </label>
-					<input type='submit' value="View Stories" />
         </form>
     </div>
     )

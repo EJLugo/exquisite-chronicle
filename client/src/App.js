@@ -98,7 +98,9 @@ class App extends Component {
     return (
       <div className="app">
         <NavBar handleViewChange={this.setView} token={this.state.token}/>
-        {this.renderUserview()}
+				<div className='main-view'>
+        	{this.renderUserview()}
+				</div>
         <Footer />
       </div>
     );

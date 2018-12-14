@@ -24,7 +24,7 @@ export default class ViewOnePrompt extends React.Component{
 	    <div>
 	      <h4>{this.props.genre}</h4>
 	      <p>{this.props.body}</p>
-				<p>{this.state.lastChapter.body}</p>
+				{this.state.lastChapter ? <p>{this.state.lastChapter.body}</p> : null}
 				<ChapterForm prompt_id={this.props.id}
 										 token={this.props.token}
 										 setView={this.props.setView}
