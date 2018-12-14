@@ -10,6 +10,6 @@
   padding: 0;
 }
 .main-view{
-	height: 80vh;
-	width: 100vw;
+	min-height: 80vh;
+	min-width: 100vw;
 }
