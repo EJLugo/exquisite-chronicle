@@ -145,7 +145,7 @@ export async function deleteUserPrompt(token, prompt_id){
 // Get all prompt's chapters
 export async function allPromptsChapters(token, prompt_id){
 	try {
-		const chapters = await axios.get(`${BASE_URL}/chapters/${prompt_id}`, {
+		const chapters = await axios.get(`${BASE_URL}/chapters/prompt/${prompt_id}`, {
 			headers: {
 				'Authorization': `Bearer ${token}`
 			}

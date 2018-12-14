@@ -28,7 +28,6 @@ export default class LoginForm extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
 		const user = await login(this.state.formData);
-		console.log(user);
 		if(user){
 			this.props.storeToken(user.data);
 			this.props.setView('contributions')
