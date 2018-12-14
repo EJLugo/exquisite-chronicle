@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { login } from '../ajax-helpers.js'
-import './LoginForm.css'
+import './LoginForm.css';
+import Logo from './Logo';
 
 export default class LoginForm extends Component {
   constructor(props){
@@ -39,10 +40,11 @@ export default class LoginForm extends Component {
   render() {
     return (
       <form
-        className='register-form'
+        className='login-form'
         onSubmit={this.handleSubmit}
        >
         <h2>Sign In</h2>
+        <Logo/>
         <label htmlFor="username">Username</label>
 
         <input

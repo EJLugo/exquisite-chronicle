@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { createChapter, createCompletedStory, deleteUserPrompt } from '../ajax-helpers.js';
-
+import './ChapterForm.css';
 export default class ChapterForm extends Component{
   constructor(props) {
     super(props);

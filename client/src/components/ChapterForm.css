@@ -1,17 +1,24 @@
-.register-form {
-	background-color: #fdefad;
+.chapter-form{
+  background-color: #fdefad;
   border-style: solid;
   border-width: 5px;
   border-color: #cb6647;
   font-family: 'Montserrat';
-	font-size: 22px;
+  font-size: 22px;
   height: 500px;
   margin: 80px 300px 80px 300px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-
+textarea{
+  font-size: 20px;
+  background-color:  #EFD5BC;
+  width: 90%;
+  height: 100px;
+  margin-top: 10px;
+  align-self: center;
+}
 input[type=submit] {
   background-color: #F2C4C4;
   color: black;
@@ -28,17 +35,4 @@ input[type=submit] {
 input[type=submit]:hover {
   background-color: #cb6647;
   color: white;
-}
-
-input[type=text],[type=password],[type=date]{
-	font-size: 20px;
-  background-color:  #EFD5BC;
-  width: 50%;
-  height: 30px;
-  margin-top: 10px;
-	align-self: center;
-  text-align: center;
-}
-input[type=date]{
-  width: 25%;
 }
