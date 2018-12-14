@@ -7,7 +7,7 @@ export default function NavBar(props){
 
 if(!loggedIn){
 	return (
-    <nav>
+    <nav className='nav-bar'>
       <button className='button' onClick={() => props.handleViewChange('welcome')}>Home</button>
 			<button className='button' onClick={() => props.handleViewChange('stories')}>Stories</button>
       <button className='button' onClick={() => props.handleViewChange('login')}>Login</button>
@@ -15,12 +15,12 @@ if(!loggedIn){
     </nav>
   )}else {
 		return (
-		<nav>
+		<nav className='nav-bar'>
       <button className='button' onClick={() => props.handleViewChange('welcome')}>Home</button>
       <button className='button' onClick={() => props.handleViewChange('stories')}>Stories</button>
       <button className='button' onClick={() => props.handleViewChange('prompts')}>Open Prompts</button>
 			<button className='button' onClick={() => props.handleViewChange('create-prompt')}>Create a Prompt</button>
-			<button className='button' onClick={() => props.handleViewChange('contributions')}>My Contributions</button>
+			<button className='button' onClick={() => props.handleViewChange('contributions')}>Writings</button>
     </nav>
-	)};
+	)}
 }
