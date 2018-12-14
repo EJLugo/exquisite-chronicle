@@ -44,7 +44,7 @@
 # Other Organizational Tools
 [Documentation and Style Guide](https://docs.google.com/document/d/1kHvEwJpPA6yf3gPer59Aw6etE7lAc6EXt0n34_Vt7m4/edit)
 
-We decided during the initial stages of preparation would be to create documentation and a style guide so that there would be consistent naming conventions across all of our work. We also had a wrap up at the end of each day where we airplayed and went through all the code worked on for that day.
+We decided during the initial stages of preparation to create documentation and a style guide so that there would be consistent naming conventions across all of our work. We also had a wrap up at the end of each day where we AirPlayed and went through all the code worked on for that day.
 
 # App Components
 ## Navigation-Bar
