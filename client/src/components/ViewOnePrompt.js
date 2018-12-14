@@ -1,18 +1,35 @@
 import React from 'react';
 import ChapterForm from './ChapterForm.js'
+import { allPromptsChapters } from '../ajax-helpers.js';
 
-function ViewOnePrompt(props){
-  return (
-    <div>
-      <h4>{props.genre}</h4>
-      <p>{props.body}</p>
-      <h4>{props.max_chapters}</h4>
-      <h4>{props.chapter_length}</h4>
-			<ChapterForm prompt_id={props.id}
-									 token={props.token}
-									 setView={props.setView}
-			/>
-    </div>
-  )
-}
-export default ViewOnePrompt;
+export default class ViewOnePrompt extends React.Component{
+	constructor(props){
+		super(props);
+		this.state ={
+			lastChapter: []
+		}
+	}
+
+	async componentDidMount(){
+		const chapters = await allPromptsChapters(this.props.token, this.props.id);
+		console.log('chapters ', chapters);
+		const lastChapter = chapters.data.pop();
+		this.setState({
+			lastChapter
+		})
+	}
+
+	render(){
+		return (
+	    <div>
+	      <h4>{this.props.genre}</h4>
+	      <p>{this.props.body}</p>
+				<p>{this.state.lastChapter.body}</p>
+				<ChapterForm prompt_id={this.props.id}
+										 token={this.props.token}
+										 setView={this.props.setView}
+				/>
+	    </div>
+	  )
+	}
+};

@@ -45,7 +45,6 @@ class App extends Component {
   }
 
 	storeToken(user_data){
-		console.log(user_data);
 		this.setState({
 			token: user_data.token,
 			currentUser: {
