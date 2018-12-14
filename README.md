@@ -23,7 +23,6 @@
 
 * Sequelize ORM on a PostgreSQL database.
 
-* Third party APIs: https://market.mashape.com/montanaflynn/spellcheck for spell checking functionality.
 
 # MVP
 * Create a working website for **Exquisite Chronicle**.
@@ -36,9 +35,16 @@
 # POST-MVP
 * Spell checking functionality.
 * Check user age and determine appropriated content.
+* A Log Out feature.
+* Use a third-party API (https://market.mashape.com/montanaflynn/spellcheck) for spell checking functionality.
 
 # Project Board
 [Trello](https://trello.com/b/3SaSpuH0/exquisite-corpse-stories)
+
+# Other Organizational Tools
+[Documentation and Style Guide](https://docs.google.com/document/d/1kHvEwJpPA6yf3gPer59Aw6etE7lAc6EXt0n34_Vt7m4/edit)
+
+We decided during the initial stages of preparation would be to create documentation and a style guide so that there would be consistent naming conventions across all of our work. We also had a wrap up at the end of each day where we airplayed and went through all the code worked on for that day.
 
 # App Components
 ## Navigation-Bar
