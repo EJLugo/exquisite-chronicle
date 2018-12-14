@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { createUser } from '../ajax-helpers.js';
-
+import './RegisterForm.css'
 export default class RegisterForm extends Component{
   constructor(props){
     super(props);
@@ -46,6 +46,7 @@ export default class RegisterForm extends Component{
           type="text"
           id="username"
           name="username"
+          placeholder='username'
           onChange={this.handleChange}
           value={this.state.username}
         />
@@ -53,6 +54,7 @@ export default class RegisterForm extends Component{
         <input
           type="password"
           id="password"
+          placeholder='password'
           name="password"
           onChange={this.handleChange}
           value={this.state.password}
