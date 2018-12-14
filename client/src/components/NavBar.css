@@ -1,6 +1,8 @@
-nav {
+.nav-bar {
 	align-items: center;
 	padding-top: 30px;
+	display: flex;
+	justify-content: center;
 }
 .button {
 	height: 100px;
@@ -8,7 +10,7 @@ nav {
 	background-color: #4d342e;
 	text-transform: uppercase;
 	justify-content: space-around;
-	margin: 12px;
+	margin: 12px ;
 	border: #4d342e;
 	color: white;
 	font-size: 24pt;
