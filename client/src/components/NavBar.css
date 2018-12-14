@@ -1,9 +1,19 @@
+
+.nav-bar-wrapper{
+	display: grid;
+	height: 100%;
+	width: 100vw;
+	grid-template-columns: 25% 50% 25%;
+}
+
 .nav-bar {
 	align-items: center;
 	padding-top: 30px;
 	display: flex;
 	justify-content: center;
+	grid-column: 2 / span 1;
 }
+
 .button {
 	height: 100px;
 	width: 135px;
