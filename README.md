@@ -26,16 +26,16 @@
 * Third party APIs: https://market.mashape.com/montanaflynn/spellcheck for spell checking functionality.
 
 # MVP
--Create a working website for **Exquisite Chronicle**.
--Guest users can view completed stories by genre.
--After logging in, a user can create a prompt by genre or view prompts by genre.
--All forms: login, register and create a prompt fully functional.
--Create all necessary routes using React and Express.      
--Style all components using CSS.
+* Create a working website for **Exquisite Chronicle**.
+* Guest users can view completed stories by genre.
+* After logging in, a user can create a prompt by genre or view prompts by genre.
+* All forms: login, register and create a prompt fully functional.
+* Create all necessary routes using React and Express.      
+* Style all components using CSS.
 
-#POST-MVP
--Spell checking functionality.
--Check user age and determine appropriated content.
+# POST-MVP
+* Spell checking functionality.
+* Check user age and determine appropriated content.
 
 # Project Board
 [Trello](https://trello.com/b/3SaSpuH0/exquisite-corpse-stories)
@@ -65,9 +65,32 @@ Wireframes , ERD and API endpoints:
 ![Component Hierarchy](https://github.com/EJLugo/exquisite-chronicle/blob/master/images/component-hierarchy.JPG)
 
 # Issues and Resolutions
--ESLint errors
+* ESLint errors
 
+* Passing props from child component to parent component. Instead of passing down state to a child component, the parent can pass down a callback function. This callback function then is run through some interaction with the child component. The purpose of this callback function is to change a piece of the state that is a part of the parent component.
+
+Child component
+```
+handleGenreChange = () => {
+    let genre = this.state.value;
+    this.props.setGenre(genre);
+}
+```
+Parent Component
+```
+handleGenre = (genreValue) => {
+  this.setState(prevState =>({
+    formData: {
+      ...prevState.formData,
+      genre:genreValue
+    }
+  }));
+}
+<Dropdown
+  setGenre={this.handleGenre}
+/>
+```
 # References
 
-[Class examples for reference: ](https://git.generalassemb.ly/wdi-nyc-octonion)
-[React website for reference: ](https://reactjs.org/docs/getting-started.html)
+* [ wdi-nyc-octonion: Class examples for reference ](https://git.generalassemb.ly/wdi-nyc-octonion)
+* [React website for reference](https://reactjs.org/docs/getting-started.html)
