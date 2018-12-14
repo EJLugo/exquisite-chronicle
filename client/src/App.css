@@ -9,3 +9,7 @@
   margin: 0;
   padding: 0;
 }
+.main-view{
+	height: 80vh;
+	width: 100vw;
+}

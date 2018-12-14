@@ -1,0 +1,17 @@
+
+.story-wrapper{
+	height: 40vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.story-book{
+	width: 35vw;
+	height: 40vh;
+	overflow: auto;
+}
+
+.story-book > p {
+	font-size: 24px;
+}
