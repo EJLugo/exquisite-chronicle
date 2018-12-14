@@ -1,13 +1,23 @@
 .welcome-container {
-	margin: 200px 150px 200px 100px;
+	margin: 100px 250px 200px 500px;
+	max-width: 600px;
+	margin-left: 29vw;
+	margin-right: 29vw;
 }
 
 .title {
+	font-family: 'Montserrat';
+	font-size: 25px;
+}
+
+.second-line {
 	font-family: 'Cutive Mono';
-	font-size: 54px;
+	font-size: 50px;
+	/* line-height: 5px; */
 }
 
 .welcome-text {
 	font-family: 'Montserrat';
-	font-size: 36px;
+	font-size: 30px;
+	line-height: 1.5;
 }
